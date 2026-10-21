@@ -182,7 +182,29 @@ Redirect 301 / https://iiruchating.ru/
 
 ---
 
-## Что менять при доработке
+## Состояние публикации
+
+Все сайты лежат на одном виртуальном хостинге reg.ru (тариф **Хост-0**, `u3692378`,
+сервер `server186.hosting.reg.ru`, IP `31.31.196.247`).
+
+| Домен | Что отдаёт | Сертификат |
+|-------|-----------|------------|
+| `iiruchating.ru` | сайт компании и бренда (этот проект) | Let's Encrypt ✓ |
+| `www.iiruchating.ru` | 301 → `iiruchating.ru` | — |
+| `iiruchating.online` | зеркало того же сайта (canonical → `iiruchating.ru`) | Let's Encrypt ✓ |
+| `ruchting.ru` | 301 → `iiruchating.ru` (короткий алиас) | Let's Encrypt ✓ |
+| `ruchting.online` | 301 → `iiruchating.online` | Let's Encrypt ✓ |
+
+Почта: домен `iiruchating.ru` + ящик `info@iiruchating.ru`.
+Домен `ruchating.ru` (сайт продукта) и `ruchating.online` пока привязаны к другому
+хостингу — их нужно переключить на `u3692378` (см. «Публикация на reg.ru»).
+
+Зеркала в `.online` нужны потому, что зона `.ru` у регистратора публикуется
+не мгновенно: пока делегация `.ru` не появилась, `.online`-домены были единственными
+работающими. Когда `.ru` заработает, `.online` можно перевести в 301 на `.ru`.
+
+---
+
 
 | Задача | Файл |
 |--------|------|

@@ -200,7 +200,7 @@
         message
       ].join('\n');
 
-      window.location.href = 'mailto:hello@iiruchating.ru'
+      window.location.href = 'mailto:info@iiruchating.ru'
         + '?subject=' + encodeURIComponent(subject)
         + '&body=' + encodeURIComponent(body);
 

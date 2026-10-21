@@ -24,6 +24,12 @@ import os
 import sys
 from pathlib import Path
 
+# Консоль Windows по умолчанию cp1251 — принудительно UTF-8, иначе падает на «→».
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:  # noqa: BLE001
+    pass
+
 # Папки, которые не нужно заливать на сервер.
 SKIP_DIRS = {".git", ".github", "node_modules", ".vscode", ".idea", "deploy", ".publish"}
 SKIP_FILES = {".DS_Store", "Thumbs.db", ".gitignore", ".gitattributes", "README.md"}

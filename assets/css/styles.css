@@ -632,9 +632,16 @@ code {
 .footer__meta { display: grid; gap: 9px; justify-items: end; font-size: .88rem; opacity: .75; }
 .footer__meta a { color: var(--md-sys-color-inverse-on-surface); }
 
-/* ============================ Появление ============================ */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* ============================ Появление ============================
+   Блоки проявляются при прокрутке. Класс js-reveal ставит скрипт в <head>:
+   если JS не загрузился (или не успел), класс снимается и контент виден сразу.
+   Так страница никогда не остаётся пустой/невидимой. */
+html.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+html.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ============================ Адаптив ============================ */
 /* Grid-элементы по умолчанию не сжимаются меньше min-content —
@@ -693,5 +700,5 @@ code {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  html.js-reveal .reveal { opacity: 1; transform: none; }
 }

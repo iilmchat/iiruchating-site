@@ -7,6 +7,10 @@
   var THEME_KEY = 'iiru-theme';
   var root = document.documentElement;
 
+  // Сообщаем инлайн-скрипту в <head>, что основной скрипт загрузился:
+  // иначе он снимет класс js-reveal и анимация появления не сработает.
+  root.setAttribute('data-iiru-ready', '');
+
   /* ---------------- Тема ---------------- */
   function applyTheme(theme) {
     if (theme === 'light' || theme === 'dark') {
@@ -67,39 +71,84 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---------------- Появление блоков ---------------- */
-  var revealItems = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  /* ---------------- Появление блоков ----------------
+     Используем проверку по геометрии, а не IntersectionObserver:
+     IO не срабатывает в ряде окружений (фоновые вкладки, headless-режим),
+     и тогда контент мог бы навсегда остаться невидимым.
+     Проверка дешёвая — 19 элементов, вызов по rAF/таймеру при прокрутке. */
+  var pendingReveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var revealScheduled = false;
 
-    revealItems.forEach(function (el) { io.observe(el); });
-  } else {
-    revealItems.forEach(function (el) { el.classList.add('is-visible'); });
+  function revealInView() {
+    revealScheduled = false;
+    if (!pendingReveals.length) return;
+
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    pendingReveals = pendingReveals.filter(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) {
+        el.classList.add('is-visible');
+        return false;
+      }
+      return true;
+    });
+  }
+
+  function scheduleReveal() {
+    if (revealScheduled) return;
+    revealScheduled = true;
+    window.requestAnimationFrame
+      ? window.requestAnimationFrame(revealInView)
+      : window.setTimeout(revealInView, 60);
+    // Страховка: если кадр не пришёл (фоновая вкладка), проверяем по таймеру.
+    window.setTimeout(function () {
+      if (revealScheduled) revealInView();
+    }, 200);
+  }
+
+  var reduceMotion = window.matchMedia
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (pendingReveals.length && reduceMotion) {
+    pendingReveals.forEach(function (el) { el.classList.add('is-visible'); });
+    pendingReveals = [];
+  } else if (pendingReveals.length) {
+    window.addEventListener('scroll', scheduleReveal, { passive: true });
+    window.addEventListener('resize', scheduleReveal, { passive: true });
+    window.addEventListener('load', scheduleReveal);
+    window.addEventListener('pageshow', scheduleReveal);
+    revealInView();
+
+    // Страховка: через 8 с показываем всё, что ещё не показано.
+    // Если событие прокрутки почему-то не пришло — контент всё равно виден.
+    window.setTimeout(function () {
+      pendingReveals.forEach(function (el) { el.classList.add('is-visible'); });
+      pendingReveals = [];
+    }, 8000);
   }
 
   /* ---------------- Подсветка активного раздела ---------------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
+  var activeSection = '';
 
-  if ('IntersectionObserver' in window && sections.length && navLinks.length) {
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(function (link) {
-          link.classList.toggle('is-active', link.getAttribute('href') === '#' + entry.target.id);
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-
-    sections.forEach(function (s) { spy.observe(s); });
+  function updateActiveSection() {
+    if (!sections.length || !navLinks.length) return;
+    var pos = (window.scrollY || window.pageYOffset) + (window.innerHeight * 0.35);
+    var current = '';
+    sections.forEach(function (s) {
+      if (s.offsetTop <= pos) current = s.id;
+    });
+    if (current === activeSection) return;
+    activeSection = current;
+    navLinks.forEach(function (link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + current);
+    });
   }
+
+  updateActiveSection();
+  window.addEventListener('scroll', updateActiveSection, { passive: true });
+  window.addEventListener('resize', updateActiveSection, { passive: true });
 
   /* ---------------- Копирование e-mail ---------------- */
   document.querySelectorAll('[data-copy]').forEach(function (el) {

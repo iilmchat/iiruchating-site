@@ -30,13 +30,19 @@
 
 <script>
   // Тема до первой отрисовки: явный выбор пользователя, иначе системная.
+  // Плюс «страховка»: блоки прячутся до появления только если main.js
+  // действительно загрузился — иначе контент виден сразу.
   (function () {
+    var root = document.documentElement;
     try {
       var t = localStorage.getItem('iiru-theme');
-      if (t === 'light' || t === 'dark') {
-        document.documentElement.setAttribute('data-theme', t);
-      }
+      if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t);
     } catch (e) { /* приватный режим */ }
+
+    root.classList.add('js-reveal');
+    window.setTimeout(function () {
+      if (!root.hasAttribute('data-iiru-ready')) root.classList.remove('js-reveal');
+    }, 3000);
   })();
 </script>
 </head>

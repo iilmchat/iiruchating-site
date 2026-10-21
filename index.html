@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>IIRuChating — корпоративный мессенджер с локальным AI-ассистентом</title>
-<meta name="description" content="IIRuChating — бренд корпоративных коммуникаций. AI Ru Chating — корпоративный мессенджер в духе Slack с локальным AI-ассистентом: RAG по файлам, OCR, vision-модели и on-premise размещение." />
-<meta name="keywords" content="IIRuChating, AI Ru Chating, корпоративный мессенджер, AI-ассистент, on-premise, RAG, SignalR, self-hosted" />
+<title>IIRuChating — AI-продукты: чат, видеонаблюдение, ассистент по билетам, конструктор сценариев</title>
+<meta name="description" content="IIRuChating — бренд и команда AI-продуктов: корпоративный чат с локальным AI-ассистентом, видеонаблюдение с AI-поиском, персональный ассистент по билетам и визуальный конструктор AI-сценариев. Open source, on-premise." />
+<meta name="keywords" content="IIRuChating, AI Ru Chating, AI Open Camera, AI Ticket Buyer, AI Workflow Builder, on-premise, open source, локальный AI, self-hosted" />
 <link rel="canonical" href="https://iiruchating.ru/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="IIRuChating" />
 <meta property="og:locale" content="ru_RU" />
 <meta property="og:url" content="https://iiruchating.ru/" />
-<meta property="og:title" content="IIRuChating — корпоративный мессенджер с локальным AI-ассистентом" />
-<meta property="og:description" content="AI Ru Chating — корпоративный мессенджер в духе Slack с локальным AI-ассистентом. RAG по файлам, OCR, vision — и всё это внутри вашего контура." />
+<meta property="og:title" content="IIRuChating — AI-продукты, которые работают на вашем сервере" />
+<meta property="og:description" content="Чат с локальным AI-ассистентом, видеонаблюдение с AI-поиском, ассистент по билетам и конструктор AI-сценариев. Open source, on-premise." />
 <meta property="og:image" content="https://iiruchating.ru/assets/img/logo-icon-512.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -27,24 +27,6 @@
 <link rel="stylesheet" href="assets/css/fonts.css" />
 <link rel="stylesheet" href="assets/css/theme-m3.css" />
 <link rel="stylesheet" href="assets/css/styles.css" />
-
-<script>
-  // Тема до первой отрисовки: явный выбор пользователя, иначе системная.
-  // Плюс «страховка»: блоки прячутся до появления только если main.js
-  // действительно загрузился — иначе контент виден сразу.
-  (function () {
-    var root = document.documentElement;
-    try {
-      var t = localStorage.getItem('iiru-theme');
-      if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t);
-    } catch (e) { /* приватный режим */ }
-
-    root.classList.add('js-reveal');
-    window.setTimeout(function () {
-      if (!root.hasAttribute('data-iiru-ready')) root.classList.remove('js-reveal');
-    }, 3000);
-  })();
-</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -56,10 +38,8 @@
     </a>
 
     <nav class="nav" id="nav" aria-label="Основная навигация">
-      <a class="nav__link" href="#product">Продукт</a>
-      <a class="nav__link" href="#features">Возможности</a>
-      <a class="nav__link" href="#privacy">On-premise</a>
-      <a class="nav__link" href="#projects">Проекты</a>
+      <a class="nav__link" href="#products">Продукты</a>
+      <a class="nav__link" href="#principles">Принципы</a>
       <a class="nav__link" href="#brand">Бренд</a>
       <a class="nav__link" href="#contact">Контакты</a>
     </nav>
@@ -69,7 +49,7 @@
         <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
         <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
       </button>
-      <a class="btn btn--primary btn--sm header__cta" href="#contact">Запросить демо</a>
+      <a class="btn btn--primary btn--sm header__cta" href="#contact">Связаться</a>
       <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -84,212 +64,199 @@
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="container hero__inner">
       <div class="hero__content">
-        <p class="eyebrow"><span class="dot"></span>IIRuChating — бренд корпоративных коммуникаций</p>
+        <p class="eyebrow"><span class="dot"></span>IIRuChating · бренд и команда</p>
         <h1 class="hero__title">
-          Корпоративный мессенджер<br />
-          <span class="grad">с локальным AI-ассистентом</span>
+          AI-продукты,<br />
+          <span class="grad">которые живут на вашем сервере</span>
         </h1>
         <p class="hero__lead">
-          <strong>AI Ru Chating</strong> — рабочие пространства, каналы, треды и личные сообщения
-          в одном приложении. AI-ассистент живёт прямо в канале, отвечает по вашим документам
-          через RAG и не отправляет данные наружу: модель работает внутри вашего контура.
+          Корпоративный чат с локальным AI-ассистентом, видеонаблюдение с AI-поиском,
+          персональный ассистент по билетам и визуальный конструктор AI-сценариев.
+          Всё open-source и on-premise: данные, видео и переписка не покидают ваш контур.
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#contact">Запросить демо</a>
-          <a class="btn btn--ghost" href="https://github.com/iilmchat/ai-ruchating" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="#products">Смотреть продукты</a>
+          <a class="btn btn--ghost" href="https://github.com/iilmchat" target="_blank" rel="noopener">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-6-2.7m12 5v-3.4c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.5 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.5.5-.6 1-.6 2V21"/></svg>
-            Код на GitHub
+            Все репозитории
           </a>
         </div>
 
         <ul class="hero__stats">
-          <li><b>9 из 10</b><span>инструментов в одном приложении</span></li>
-          <li><b>On-premise</b><span>модель внутри вашего контура</span></li>
-          <li><b>Real-time</b><span>SignalR: доставка и ввод за мгновение</span></li>
+          <li><b>4 продукта</b><span>и новые по мере роста команды</span></li>
+          <li><b>On-premise</b><span>модели и данные внутри вашего контура</span></li>
+          <li><b>Open source</b><span>код, который можно прочитать и форкнуть</span></li>
         </ul>
       </div>
 
-      <!-- Мок чата -->
       <div class="hero__visual" aria-hidden="true">
-        <div class="app">
-          <div class="app__bar">
-            <span class="app__dots"><i></i><i></i><i></i></span>
-            <span class="app__title">AI Ru Chating — #general</span>
-            <img class="app__logo" src="assets/img/logo-icon.svg" alt="" width="20" height="20" />
+        <div class="pstack">
+          <div class="ptile">
+            <img class="plogo" src="assets/img/products/ruchating.svg" alt="" width="44" height="44" />
+            <div><b>AI Ru Chating</b><span>корпоративный чат</span></div>
           </div>
-          <div class="app__body">
-            <aside class="app__side">
-              <span class="app__ws">AI Ru Chating</span>
-              <span class="app__item is-active"># general</span>
-              <span class="app__item"># random</span>
-              <span class="app__item"># product</span>
-              <span class="app__item app__item--ai">✦ AI-ассистент</span>
-              <span class="app__item app__item--dim">+ создать канал</span>
-            </aside>
-            <div class="app__chat">
-              <div class="msg">
-                <div class="msg__head"><b>Анна</b><span>10:24</span></div>
-                <div class="msg__body">Коллеги, кидаю протокол совещания — что решили по срокам?</div>
-              </div>
-              <div class="msg">
-                <div class="msg__head"><b>Иван</b><span>10:25</span></div>
-                <div class="msg__body">Смотрю. Вложил PDF и скан с подписью.</div>
-                <div class="msg__file">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v5h5M6 3h8l5 5v13H6z"/></svg>
-                  протокол-совещания.pdf
-                </div>
-              </div>
-              <div class="msg msg--ai">
-                <div class="msg__head"><b>AI-ассистент</b><span>10:25</span></div>
-                <div class="msg__body">
-                  <p><b>По протоколу от 21.10:</b> срок запуска перенесён на 14 ноября, бэклог
-                  перенесён на спринт 42.</p>
-                  <div class="chips">
-                    <span class="chip">протокол.pdf · стр. 2</span>
-                    <span class="chip">скан · OCR</span>
-                  </div>
-                </div>
-              </div>
-              <div class="typing"><i></i><i></i><i></i></div>
-            </div>
+          <div class="ptile">
+            <img class="plogo" src="assets/img/products/opencamera.svg" alt="" width="44" height="44" />
+            <div><b>AI Open Camera</b><span>видеонаблюдение с AI-поиском</span></div>
+          </div>
+          <div class="ptile">
+            <img class="plogo" src="assets/img/products/ticketbuyer.svg" alt="" width="44" height="44" />
+            <div><b>AI Ticket Buyer</b><span>ассистент по билетам</span></div>
+          </div>
+          <div class="ptile">
+            <img class="plogo" src="assets/img/products/workflow.svg" alt="" width="44" height="44" />
+            <div><b>AI Workflow Builder</b><span>конструктор AI-сценариев</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ПРОДУКТ ============ -->
-  <section class="section" id="product">
+  <!-- ============ ПРОДУКТЫ ============ -->
+  <section class="section" id="products">
     <div class="container">
       <div class="section__head">
-        <p class="eyebrow">Продукт</p>
-        <h2 class="section__title">AI Ru Chating</h2>
+        <p class="eyebrow">Продукты</p>
+        <h2 class="section__title">IIRuChating — портфель продуктов</h2>
         <p class="section__lead">
-          Корпоративный мессенджер в духе Slack, который работает на вашей модели.
-          Первый пользователь становится системным администратором, остальные подключаются по e-mail.
+          Продукты разные по назначению, но принципы общие: локальный AI вместо облака,
+          открытый код вместо подписки, предсказуемая работа на своём железе.
         </p>
       </div>
 
-      <div class="split">
-        <div class="split__col">
-          <h3 class="split__title">Что внутри</h3>
-          <ul class="checklist">
-            <li><b>Рабочие пространства</b> — создание, переключение, приглашение участников по e-mail.</li>
-            <li><b>Каналы</b> — публичные и приватные, темы, состав участников в реальном времени.</li>
-            <li><b>Сообщения</b> — правка, удаление, реакции, треды, закрепление, счётчики непрочитанного.</li>
-            <li><b>Вложения</b> — до 10 файлов на сообщение по 25 МБ, drag-and-drop, превью изображений.</li>
-            <li><b>Личные сообщения</b> и <b>присутствие</b> — онлайн-статусы и ввод текста на лету.</li>
-            <li><b>Центр уведомлений</b> — упоминания `@имя` и `@all` с автокомплитом.</li>
-            <li><b>Журнал действий</b> — роли, участники, каналы, модерация.</li>
-            <li><b>Аналитика AI</b> — запросы, токены, задержка и ошибки по провайдерам и дням.</li>
-          </ul>
-        </div>
-        <div class="split__col">
-          <h3 class="split__title">AI-ассистент</h3>
-          <ul class="checklist">
-            <li><b>Участник пространства</b> — отдельный диалог, SSE-стриминг, история сохраняется.</li>
-            <li><b>RAG по файлам</b> — текст вложений режется на фрагменты, эмбеддинги считаются
-                через <code>/embeddings</code>, релевантное подмешивается в промпт.</li>
-            <li><b>PDF</b> — индексация по страницам со ссылками <code>[стр. N]</code>.</li>
-            <li><b>OCR</b> — сканы без текстового слоя распознаются: PDFium рендерит страницы,
-                vision-модель транскрибирует текст.</li>
-            <li><b>Vision</b> — изображения описываются моделью и попадают в RAG, в чат идут напрямую.</li>
-            <li><b>Провайдер и модель</b> — выбираются на уровне пространства: модель беседы →
-                модель пространства → модель по умолчанию.</li>
-            <li><b>Контекст</b> — файлы, прикреплённые прямо в AI-диалоге, уходят модели частью контекста.</li>
-          </ul>
-          <div class="stack-chips">
-            <span class="stack-chip">.NET 10 LTS</span>
-            <span class="stack-chip">ASP.NET Core</span>
-            <span class="stack-chip">EF Core 10</span>
-            <span class="stack-chip">SignalR</span>
-            <span class="stack-chip">React 19</span>
-            <span class="stack-chip">TypeScript</span>
-            <span class="stack-chip">Vite</span>
-            <span class="stack-chip">Tailwind CSS v4</span>
-            <span class="stack-chip">TanStack Query</span>
-            <span class="stack-chip">Zustand</span>
+      <div class="pcards">
+        <article class="pcard pcard--wide reveal">
+          <div class="pcard__head">
+            <img class="pcard__logo" src="assets/img/products/ruchating.svg" alt="AI Ru Chating" width="64" height="64" />
+            <div>
+              <h3>AI Ru Chating</h3>
+              <p class="pcard__tagline">Корпоративный мессенджер с локальным AI-ассистентом</p>
+            </div>
+            <span class="pcard__status pcard__status--main">основной продукт · v0.9.2</span>
           </div>
-        </div>
+          <p class="pcard__text">
+            Рабочие пространства, публичные и приватные каналы, треды, реакции и личные сообщения
+            в одном приложении. AI-ассистент живёт прямо в беседе, отвечает по вашим документам
+            через RAG и не отправляет данные наружу: модель работает внутри вашего контура.
+          </p>
+          <ul class="pcard__list">
+            <li>Рабочие пространства, каналы, треды, реакции, закреплённые сообщения</li>
+            <li>AI-ассистент участником беседы: SSE-стриминг, история запусков</li>
+            <li>RAG по файлам пространства: эмбеддинги, PDF по страницам, OCR и vision</li>
+            <li>Real-time на SignalR: сообщения, присутствие, набор текста, прочтение</li>
+            <li>SQLite по умолчанию, PostgreSQL и MSSQL — через конфигурацию</li>
+          </ul>
+          <div class="pcard__links">
+            <a class="btn btn--primary btn--sm" href="https://ruchating.ru/" target="_blank" rel="noopener">Сайт продукта</a>
+            <a class="btn btn--ghost btn--sm" href="https://github.com/iilmchat/ai-ruchating" target="_blank" rel="noopener">Код на GitHub</a>
+          </div>
+        </article>
+
+        <article class="pcard reveal">
+          <div class="pcard__head">
+            <img class="pcard__logo" src="assets/img/products/opencamera.svg" alt="AI Open Camera" width="64" height="64" />
+            <div>
+              <h3>AI Open Camera</h3>
+              <p class="pcard__tagline">Локальная AI-платформа видеонаблюдения</p>
+            </div>
+            <span class="pcard__status">design draft · v0.1.0</span>
+          </div>
+          <p class="pcard__text">
+            Объединяет камеры разных производителей в один интерфейс, пишет видео 24/7,
+            распознаёт людей, животных, птиц и машины, учится узнавать «своих» по подсказке
+            пользователя и ищет события по времени, камере, зоне и естественному языку.
+          </p>
+          <ul class="pcard__list">
+            <li>Камеры в локальной сети, RTSP-стрими, непрерывная запись</li>
+            <li>Конвейер: детекция объектов → трекинг → эмбеддинги → события → поиск</li>
+            <li>«Это Аня» — система запоминает человека по подсказке, а не по облачной базе</li>
+            <li>Браузер или PWA: «Кто приходил к калитке вчера вечером?»</li>
+          </ul>
+          <div class="pcard__links">
+            <a class="btn btn--ghost btn--sm" href="https://github.com/iilmchat/ai-opencamera" target="_blank" rel="noopener">Код на GitHub</a>
+          </div>
+        </article>
+
+        <article class="pcard reveal">
+          <div class="pcard__head">
+            <img class="pcard__logo" src="assets/img/products/ticketbuyer.svg" alt="AI Ticket Buyer" width="64" height="64" />
+            <div>
+              <h3>AI Ticket Buyer</h3>
+              <p class="pcard__tagline">Персональный ассистент по театрам и концертам</p>
+            </div>
+            <span class="pcard__status">MVP в работе</span>
+          </div>
+          <p class="pcard__text">
+            Знакомится с интересами и собирает профиль вкуса, предлагает подходящие события
+            и объясняет, почему они подходят. Следит за новыми датами, изменением цен и статусом
+            продажи — и ведёт к покупке у официального продавца.
+          </p>
+          <ul class="pcard__list">
+            <li>Каталог: 13 площадок, 12 live-источников, fuzzy-матчинг событий</li>
+            <li>Персональный скоринг по жанрам, площадкам, времени и бюджету</li>
+            <li>Watch и дайджест: новые даты, изменения цен, статусы продажи</li>
+            <li>Вход по email magic link, импорт билетов прямо из почты</li>
+          </ul>
+          <div class="pcard__links">
+            <a class="btn btn--ghost btn--sm" href="https://github.com/iilmchat/ai-ticketbuyer" target="_blank" rel="noopener">Код на GitHub</a>
+          </div>
+        </article>
+
+        <article class="pcard reveal">
+          <div class="pcard__head">
+            <img class="pcard__logo" src="assets/img/products/workflow.svg" alt="IIChatTools AI Workflow Builder" width="64" height="64" />
+            <div>
+              <h3>AI Workflow Builder</h3>
+              <p class="pcard__tagline">Визуальный конструктор AI-сценариев</p>
+            </div>
+            <span class="pcard__status">v0.11.1</span>
+          </div>
+          <p class="pcard__text">
+            Собирайте LLM-, агентные и интеграционные сценарии в визуальном редакторе:
+            узлы соединяются мышью, собранный workflow запускается как API.
+            Работает и с вашими, и с чужими LLM — провайдер задаётся в настройках.
+          </p>
+          <ul class="pcard__list">
+            <li>22 типа узлов: LLM, агенты, HTTP, обработка данных, Share-файлы</li>
+            <li>Импорт и экспорт сценариев, извлечение данных из PDF и DOCX</li>
+            <li>PostgreSQL + pgvector, S3-хранилище, OpenTelemetry-observability</li>
+            <li>NestJS 12 · React 19 · собранный workflow отдаётся по HTTP API</li>
+          </ul>
+          <div class="pcard__links">
+            <a class="btn btn--ghost btn--sm" href="https://github.com/iilmchat/ai-workflow-builder" target="_blank" rel="noopener">Код на GitHub</a>
+          </div>
+        </article>
       </div>
+
+      <p class="portfolio-note reveal">
+        Здесь будут и будущие продукты. Брендкит, логотип и палитра — общие для всей линейки,
+        поэтому каждый продукт выглядит частью одного семейства.
+      </p>
     </div>
   </section>
 
-  <!-- ============ ВОЗМОЖНОСТИ ============ -->
-  <section class="section section--alt" id="features">
-    <div class="container">
-      <div class="section__head">
-        <p class="eyebrow">Возможности</p>
-        <h2 class="section__title">Всё, что нужно рабочей коммуникации</h2>
-      </div>
-
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
-          <h3>Каналы, треды, личные сообщения</h3>
-          <p>Публичные и приватные каналы, темы, треды с счётчиком ответов, реакции, закрепление и личные диалоги 1-на-1.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <h3>Real-time на SignalR</h3>
-          <p>Новые сообщения, правки, удаления, присутствие, состояние прочтения и индикатор набора текста — без перезагрузки.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg></div>
-          <h3>AI-ассистент в канале</h3>
-          <p>Модель отвечает прямо в беседе, помогает по контексту канала и держит историю запусков для аудита.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v5h5M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h4"/></svg></div>
-          <h3>RAG по рабочим файлам</h3>
-          <p>Эмбеддинги, фрагменты и подмешивание релевантного контекста в промпт. Поиск по содержимому, страницам PDF и описаниям картинок.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
-          <h3>OCR и vision</h3>
-          <p>Сканы распознаются через PDFium и vision-модель, изображения описываются и попадают в базу знаний.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></div>
-          <h3>Полнотекстовый поиск</h3>
-          <p>Поиск по всем сообщениям пространства с переходом в нужную беседу — и по файлам в отдельной модалке.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
-          <h3>Роли и безопасность</h3>
-          <p>Owner, Admin, Member, Guest. Приватные каналы со своим составом, журнал действий и настройки уведомлений.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M6 17V9m6 8V4m6 13v-6"/></svg></div>
-          <h3>Аналитика использования</h3>
-          <p>Запросы, токены, средняя задержка и ошибки с разбивкой по провайдерам, моделям, участникам и дням за 7/30/90 дней.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ON-PREMISE ============ -->
-  <section class="section" id="privacy">
+  <!-- ============ ПРИНЦИПЫ ============ -->
+  <section class="section section--alt" id="principles">
     <div class="container">
       <div class="privacy">
         <div class="privacy__text">
-          <p class="eyebrow">On-premise</p>
+          <p class="eyebrow">Принципы</p>
           <h2 class="section__title">Данные не покидают ваш контур</h2>
           <p class="section__lead">
-            Браузер никогда не обращается к модели напрямую: все AI-запросы идут через сервер.
-            Модель может жить на вашем железе — LM Studio, vLLM или любой OpenAI-совместимый endpoint.
+            Это сквозное требование ко всей линейке. Переписка, видео с камер, билеты и
+            сценарии остаются у вас: модели работают на вашем железе, облако не требуется.
           </p>
           <ul class="ticks">
-            <li>SQLite по умолчанию, PostgreSQL и MSSQL — через конфигурацию.</li>
-            <li>JWT в памяти + ротируемый refresh-token в HttpOnly cookie.</li>
-            <li>Пользователь настраивает провайдера, модели и подключение — проверка связи и обнаружение моделей.</li>
-            <li>Никаких внешних API: содержимое сообщений и файлов не уходит в облако.</li>
+            <li>Модель может жить на вашем сервере — LM Studio, vLLM или любой OpenAI-совместимый endpoint.</li>
+            <li>Никаких обязательных подписок: купили железо — и этого достаточно.</li>
+            <li>Код открыт: его можно прочитать, проверить и форкнуть.</li>
+            <li>Данные не используются для обучения и не уходят третьим лицам.</li>
           </ul>
         </div>
         <div class="privacy__card">
           <div class="terminal">
-            <div class="terminal__bar"><i></i><i></i><i></i><span>AI Ru Chating</span></div>
+            <div class="terminal__bar"><i></i><i></i><i></i><span>IIRuChating</span></div>
             <pre class="terminal__body"><code><span class="t-muted"># локальный OpenAI-совместимый endpoint</span>
 <span class="t-cmd">$</span> curl http://127.0.0.1:8034/v1/models
 
@@ -306,82 +273,6 @@
     </div>
   </section>
 
-  <!-- ============ ПРОЕКТЫ ============ -->
-  <section class="section section--alt" id="projects">
-    <div class="container">
-      <div class="section__head">
-        <p class="eyebrow">Линейка продуктов</p>
-        <h2 class="section__title">Проекты IIRuChating</h2>
-        <p class="section__lead">
-          Мы делаем инструменты для работы с LLM: от моста к локальным моделям
-          до визуального редактора AI-сценариев. Всё open-source.
-        </p>
-      </div>
-
-      <div class="projects">
-        <a class="project project--hero reveal" href="https://github.com/iilmchat/ai-ruchating" target="_blank" rel="noopener">
-          <div class="project__top">
-            <img class="project__icon" src="assets/img/logo-icon.svg" alt="" width="40" height="40" />
-            <span class="project__tag">Основной продукт</span>
-          </div>
-          <h3>AI Ru Chating</h3>
-          <p>Корпоративный мессенджер в духе Slack с локальным AI-ассистентом: RAG, OCR, vision и real-time.</p>
-          <span class="project__link">Репозиторий →</span>
-        </a>
-
-        <a class="project reveal" href="https://github.com/iilmchat/ai-workflow-builder" target="_blank" rel="noopener">
-          <div class="project__top">
-            <span class="project__badge">TS</span>
-            <span class="project__tag">AI Workflow Builder</span>
-          </div>
-          <h3>Визуальный редактор сценариев</h3>
-          <p>Нодовый редактор LLM-воркфлоу: NestJS, React Flow, PostgreSQL.</p>
-          <span class="project__link">Репозиторий →</span>
-        </a>
-
-        <a class="project reveal" href="https://github.com/iilmchat/IIChatTools" target="_blank" rel="noopener">
-          <div class="project__top">
-            <span class="project__badge">C#</span>
-            <span class="project__tag">IIChatTools</span>
-          </div>
-          <h3>Мост инструментов для LLM</h3>
-          <p>Tool bridge для LM Studio — подключение локальных моделей к внешним сервисам.</p>
-          <span class="project__link">Репозиторий →</span>
-        </a>
-
-        <a class="project reveal" href="https://github.com/iilmchat/ai_dsh_bridge" target="_blank" rel="noopener">
-          <div class="project__top">
-            <span class="project__badge">TS</span>
-            <span class="project__tag">Gateway</span>
-          </div>
-          <h3>DeepSeek Harness Bridge</h3>
-          <p>OpenAI-совместимый шлюз к DeepSeek Harness через chat.deepseek.com.</p>
-          <span class="project__link">Репозиторий →</span>
-        </a>
-
-        <a class="project reveal" href="https://github.com/iilmchat/infocom-lm-chat" target="_blank" rel="noopener">
-          <div class="project__top">
-            <span class="project__badge">JS</span>
-            <span class="project__tag">infocom</span>
-          </div>
-          <h3>infocom-lm-chat</h3>
-          <p>SPA-чат с AI-интеграцией, RAG, мультипользовательским режимом и i18n.</p>
-          <span class="project__link">Репозиторий →</span>
-        </a>
-
-        <a class="project reveal" href="https://github.com/iilmchat/ai-brand" target="_blank" rel="noopener">
-          <div class="project__top">
-            <span class="project__badge">CSS</span>
-            <span class="project__tag">Brand kit</span>
-          </div>
-          <h3>Брендкит IIRuChating</h3>
-          <p>Логотип, палитра Material 3, шрифты и правила оформления — открытый набор материалов.</p>
-          <span class="project__link">Репозиторий →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ БРЕНД ============ -->
   <section class="section" id="brand">
     <div class="container">
@@ -389,9 +280,9 @@
         <p class="eyebrow">Бренд</p>
         <h2 class="section__title">IIRuChating</h2>
         <p class="section__lead">
-          IIRuChating — бренд, AI Ru Chating — продукт на его материалах.
-          Брендбук, логотип и палитра Material 3 выложены в открытый доступ,
-          чтобы все продукты линейки выглядели одинаково.
+          Один бренд на всю линейку: логотип, палитра Material 3, шрифты и правила оформления
+          выложены в открытый доступ, чтобы продукты выглядели частью одного семейства
+          и новые проекты начинались не с нуля.
         </p>
       </div>
 
@@ -426,10 +317,10 @@
       <div class="contact">
         <div class="contact__text">
           <p class="eyebrow">Контакты</p>
-          <h2 class="section__title">Покажем AI Ru Chating в вашем контуре</h2>
+          <h2 class="section__title">Покажем любой из продуктов в вашем контуре</h2>
           <p class="section__lead">
             Развернём стенд на вашем железе, подключим вашу модель и покажем,
-            как AI-ассистент отвечает по вашим документам.
+            как продукт работает на ваших данных.
           </p>
           <ul class="contact__list">
             <li>
@@ -475,18 +366,17 @@
   <div class="container footer__inner">
     <div class="footer__brand">
       <img class="footer__logo" src="assets/img/logo-full.svg" alt="IIRuChating" width="240" height="96" />
-      <p>Бренд корпоративных коммуникаций. AI Ru Chating — продукт на его материалах.</p>
+      <p>Бренд AI-продуктов. Чаты, видео, ассистенты и сценарии — всё на вашем сервере.</p>
     </div>
     <nav class="footer__nav" aria-label="Навигация в подвале">
-      <a href="#product">Продукт</a>
-      <a href="#features">Возможности</a>
-      <a href="#privacy">On-premise</a>
-      <a href="#projects">Проекты</a>
+      <a href="#products">Продукты</a>
+      <a href="#principles">Принципы</a>
       <a href="#brand">Бренд</a>
       <a href="#contact">Контакты</a>
     </nav>
     <div class="footer__meta">
       <a href="https://github.com/iilmchat" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://ruchating.ru/">ruchating.ru</a>
       <span>© 2026 IIRuChating</span>
     </div>
   </div>

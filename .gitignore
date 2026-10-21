@@ -1,0 +1,11 @@
+# Сборочные артефакты
+.DS_Store
+Thumbs.db
+*.log
+
+# Редакторы
+.vscode/
+.idea/
+
+# Публикация
+.publish/

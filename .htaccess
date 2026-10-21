@@ -6,6 +6,13 @@ DirectoryIndex index.html
 # Своя страница 404
 ErrorDocument 404 /404.html
 
+# Редирект www.iiruchating.ru -> iiruchating.ru (301)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.iiruchating\.ru$ [NC]
+  RewriteRule ^(.*)$ https://iiruchating.ru/$1 [R=301,L]
+</IfModule>
+
 # Сжатие
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml

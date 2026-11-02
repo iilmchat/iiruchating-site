@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <mask id="chessannotator-cut">
+      <rect width="64" height="64" fill="#fff"/>
+      <g fill="#000">
+        <path d="M24 46h16v-3c0-5-3-9-7-12l3-7-5-3-6 9-5 2 3 5 3-1 2 4c-3 2-4 4-4 6z"/>
+        <path d="M44 24h9v3h-9z"/>
+        <path d="M44 31h7v3h-7z"/>
+        <path d="M44 38h9v3h-9z"/>
+      </g>
+      <circle cx="31" cy="27" r="1.5" fill="#fff"/>
+    </mask>
+  </defs>
+  <path d="M32 2 58 17v30L32 62 6 47V17Z" fill="currentColor" mask="url(#chessannotator-cut)"/>
+</svg>

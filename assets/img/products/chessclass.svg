@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <mask id="chessclass-cut">
+      <rect width="64" height="64" fill="#fff"/>
+      <path d="M22 18h5v5h4v-5h5v5h4v-5h5v12h-4v14h4v6H22v-6h4V30h-4z" fill="#000"/>
+    </mask>
+  </defs>
+  <path d="M32 2 58 17v30L32 62 6 47V17Z" fill="currentColor" mask="url(#chessclass-cut)"/>
+</svg>

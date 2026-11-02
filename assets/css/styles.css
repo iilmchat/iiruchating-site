@@ -642,22 +642,22 @@ code {
   :root:not([data-theme="light"]) .pcard__logo { filter: invert(1); }
 }
 
-.pstack { display: grid; gap: 12px; }
+.pstack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .ptile {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
+  gap: 11px;
+  min-width: 0;
+  padding: 12px 13px;
   border-radius: var(--radius);
   border: 1px solid var(--md-sys-color-outline-variant);
   background: var(--md-sys-color-surface-container-lowest);
   box-shadow: var(--shadow-sm);
 }
-.ptile:nth-child(2) { transform: translateX(18px); }
-.ptile:nth-child(3) { transform: translateX(6px); }
-.ptile .plogo { width: 40px; height: 40px; flex: none; }
-.ptile b { display: block; font-size: .97rem; line-height: 1.25; }
-.ptile span { font-size: .83rem; color: var(--md-sys-color-on-surface-variant); }
+.ptile div { min-width: 0; }
+.ptile .plogo { width: 34px; height: 34px; flex: none; }
+.ptile b { display: block; font-size: .87rem; line-height: 1.25; }
+.ptile span { font-size: .76rem; line-height: 1.35; color: var(--md-sys-color-on-surface-variant); }
 
 .pcards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .pcard {
@@ -719,6 +719,15 @@ code {
 }
 .pcard__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 4px; }
 
+.products__subhead {
+  max-width: 760px;
+  margin-top: clamp(44px, 6vw, 72px);
+}
+.products__subtitle {
+  margin: 0 0 .35em;
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+}
+
 .portfolio-note {
   margin: 26px 0 0;
   font-size: .95rem;
@@ -779,7 +788,6 @@ html.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
   .brand-grid { grid-template-columns: 1fr; }
   .pcards { grid-template-columns: 1fr; }
   .pcard--wide { grid-column: span 1; }
-  .ptile:nth-child(2), .ptile:nth-child(3) { transform: none; }
 }
 
 @media (max-width: 640px) {
@@ -792,6 +800,7 @@ html.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
   .app__ws { display: none; }
   .app__item { white-space: nowrap; }
   .footer__inner { grid-template-columns: 1fr; }
+  .pstack { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

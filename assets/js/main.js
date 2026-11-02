@@ -21,10 +21,6 @@
     try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* приватный режим */ }
   }
 
-  function storedTheme() {
-    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
-  }
-
   function currentTheme() {
     var attr = root.getAttribute('data-theme');
     if (attr === 'light' || attr === 'dark') return attr;

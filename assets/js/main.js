@@ -160,6 +160,14 @@
     });
   });
 
+  /* ---------------- Цели Яндекс.Метрики ---------------- */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a');
+    if (link && link.closest('.pcard__links') && window.ym) {
+      window.ym(114015204, 'reachGoal', 'product_click');
+    }
+  });
+
   /* ---------------- Форма заявки ---------------- */
   var form = document.getElementById('lead-form');
   var note = document.getElementById('form-note');
@@ -195,6 +203,10 @@
         'Компания и задача:',
         message
       ].join('\n');
+
+      if (window.ym) {
+        window.ym(114015204, 'reachGoal', 'lead_form');
+      }
 
       window.location.href = 'mailto:info@iiruchating.ru'
         + '?subject=' + encodeURIComponent(subject)

@@ -735,6 +735,30 @@ code {
   max-width: 72ch;
 }
 
+/* ============================ Юридические страницы ============================ */
+.legal { max-width: 820px; }
+.legal__meta {
+  margin: -0.4em 0 2em;
+  font-size: .9rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.legal h2 {
+  margin: 2em 0 .45em;
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+}
+.legal p,
+.legal li {
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.65;
+}
+.legal ul {
+  margin: .6em 0 1.2em;
+  padding-left: 1.2em;
+}
+.legal li { margin: .35em 0; }
+.legal a { color: var(--md-sys-color-primary); }
+.legal .btn { margin-top: 1em; }
+
 /* ============================ Появление ============================
    Блоки проявляются при прокрутке. Класс js-reveal ставит скрипт в <head>:
    если JS не загрузился (или не успел), класс снимается и контент виден сразу.

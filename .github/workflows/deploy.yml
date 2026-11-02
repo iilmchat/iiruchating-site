@@ -1,0 +1,38 @@
+name: Deploy site to reg.ru
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-iiruchating
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Deploy via FTPS
+        env:
+          REG_FTP_HOST: ${{ secrets.REG_FTP_HOST }}
+          REG_FTP_USER: ${{ secrets.REG_FTP_USER }}
+          REG_FTP_PASS: ${{ secrets.REG_FTP_PASS }}
+          REG_FTP_DIR: www/iiruchating.ru
+        run: |
+          if [ -z "$REG_FTP_HOST" ] || [ -z "$REG_FTP_USER" ] || [ -z "$REG_FTP_PASS" ]; then
+            echo "::error::Add REG_FTP_HOST, REG_FTP_USER and REG_FTP_PASS to repository secrets."
+            exit 1
+          fi
+          python deploy/deploy.py

@@ -31,7 +31,7 @@ except Exception:  # noqa: BLE001
     pass
 
 # Папки, которые не нужно заливать на сервер.
-SKIP_DIRS = {".git", ".github", "node_modules", ".vscode", ".idea", "deploy", ".publish"}
+SKIP_DIRS = {".git", ".github", "node_modules", ".vscode", ".idea", "deploy", ".publish", "docs"}
 SKIP_FILES = {".DS_Store", "Thumbs.db", ".gitignore", ".gitattributes", "README.md"}
 
 # Служебные файлы, которые на сервере не нужны.

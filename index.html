@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IIRuChating — AI-продукты: чат, видео, сценарии, обучение</title>
 <meta name="description" content="AI-продукты IIRuChating: корпоративный чат с локальным AI, видеонаблюдение, билеты, сценарии и обучение. On-premise для ключевых продуктов." />
-<meta name="keywords" content="IIRuChating, AI Ru Chating, AI Open Camera, AI Ticket Buyer, AI Workflow Builder, DzenWriter, ChessClass, AI Teacher for Python, ChessAnnotator, GitFlic, on-premise, локальный AI, self-hosted, обучение Python, шахматы" />
+<meta name="keywords" content="IIRuChating, AI Ru Chating, AI Open Camera, AI Ticket Buyer, AI Workflow Builder, DzenWriter, ChessClass, AI Teacher for Python, ChessAnnotator, IIChatTools, QwenForge, GitFlic, on-premise, локальный AI, self-hosted, обучение Python, шахматы" />
 <link rel="canonical" href="https://iiruchating.ru/" />
 
 <meta property="og:type" content="website" />
@@ -85,6 +85,7 @@
 
     <nav class="nav" id="nav" aria-label="Основная навигация">
       <a class="nav__link" href="#products">Продукты</a>
+      <a class="nav__link" href="#developers">Разработчикам</a>
       <a class="nav__link" href="#principles">Принципы</a>
       <a class="nav__link" href="#brand">Бренд</a>
       <a class="nav__link" href="#contact">Контакты</a>
@@ -407,6 +408,84 @@
     </div>
   </section>
 
+  <!-- ============ ДЛЯ РАЗРАБОТЧИКОВ ============ -->
+  <section class="section" id="developers">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Для разработчиков</p>
+        <h2 class="section__title">Инструменты, на которых собраны продукты</h2>
+        <p class="section__lead">
+          Два инструмента из внутреннего стека: IIChatTools даёт локальным LLM
+          доступ к среде разработчика, QwenForge ведёт модель от данных до GGUF.
+        </p>
+      </div>
+
+      <div class="devtools">
+        <article class="devtool reveal">
+          <div class="devtool__head">
+            <div class="card__icon">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 5 5-5 5M12 17h8"/></svg>
+            </div>
+            <div>
+              <h3>IIChatTools</h3>
+              <p class="devtool__tagline">Мост инструментов для локальных LLM</p>
+            </div>
+            <span class="pcard__status">v2.2.0</span>
+          </div>
+          <p class="devtool__text">
+            Даёт локальной модели инструменты разработчика: файлы, Git/GitHub, HTTP,
+            почту, браузер, RAG и multi-agent сценарии. Работает с LM Studio,
+            поддерживает approvals, SSE и аудит действий.
+          </p>
+          <div class="stack-chips">
+            <span class="stack-chip">73 инструмента</span>
+            <span class="stack-chip">multi-agent</span>
+            <span class="stack-chip">approvals</span>
+            <span class="stack-chip">LM Studio</span>
+            <span class="stack-chip">.NET 10 LTS</span>
+          </div>
+          <div class="pcard__links">
+            <a class="btn btn--ghost btn--sm" href="https://github.com/iilmchat/IIChatTools" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-6-2.7m12 5v-3.4c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.5 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.5.5-.6 1-.6 2V21"/></svg>
+              Репозиторий на GitHub
+            </a>
+          </div>
+        </article>
+
+        <article class="devtool reveal">
+          <div class="devtool__head">
+            <div class="card__icon">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s4.5 4.2 4.5 7.5a4.5 4.5 0 0 1-9 0C7.5 7.2 12 3 12 3Z"/><path d="M5 21c1.5-3 4-4.5 7-4.5s5.5 1.5 7 4.5"/></svg>
+            </div>
+            <div>
+              <h3>QwenForge</h3>
+              <p class="devtool__tagline">QLoRA → GGUF для моделей Qwen</p>
+            </div>
+            <span class="pcard__status">v0.1.0 · beta</span>
+          </div>
+          <p class="devtool__text">
+            CLI-конвейер: подготовка данных, QLoRA/CPT, экспорт в GGUF и проверка
+            в llama.cpp. Работает на AMD ROCm и NVIDIA CUDA, есть режим для 12 ГБ VRAM.
+          </p>
+          <div class="stack-chips">
+            <span class="stack-chip">prepare-data</span>
+            <span class="stack-chip">train</span>
+            <span class="stack-chip">export-gguf</span>
+            <span class="stack-chip">ROCm / CUDA</span>
+            <span class="stack-chip">12 ГБ VRAM</span>
+          </div>
+          <p class="devtool__note">Репозиторий приватный — доступ по запросу.</p>
+          <div class="pcard__links">
+            <a class="btn btn--ghost btn--sm" href="#contact">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 8 9 5 9-5"/></svg>
+              Запросить доступ
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ ПРИНЦИПЫ ============ -->
   <section class="section section--alt" id="principles">
     <div class="container">
@@ -546,6 +625,7 @@
     </div>
     <nav class="footer__nav" aria-label="Навигация в подвале">
       <a href="#products">Продукты</a>
+      <a href="#developers">Разработчикам</a>
       <a href="#principles">Принципы</a>
       <a href="#brand">Бренд</a>
       <a href="#contact">Контакты</a>

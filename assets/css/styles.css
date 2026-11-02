@@ -719,6 +719,28 @@ code {
 }
 .pcard__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 4px; }
 
+/* Инструменты разработчика */
+.devtools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.devtool {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-lowest);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.devtool:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.devtool__head { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
+.devtool__head .card__icon { margin-bottom: 0; flex: none; }
+.devtool__head h3 { margin: 0 0 .15em; font-size: 1.2rem; }
+.devtool__tagline { margin: 0; font-size: .9rem; color: var(--md-sys-color-on-surface-variant); }
+.devtool__text { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--md-sys-color-on-surface-variant); }
+.devtool .stack-chips { margin-top: 0; }
+.devtool__note { margin: -4px 0 0; font-size: .86rem; color: var(--md-sys-color-on-surface-variant); }
+.devtool .pcard__links { margin-top: auto; padding-top: 4px; }
+
 .products__subhead {
   max-width: 760px;
   margin-top: clamp(44px, 6vw, 72px);
@@ -812,6 +834,7 @@ html.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
   .brand-grid { grid-template-columns: 1fr; }
   .pcards { grid-template-columns: 1fr; }
   .pcard--wide { grid-column: span 1; }
+  .devtools { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {

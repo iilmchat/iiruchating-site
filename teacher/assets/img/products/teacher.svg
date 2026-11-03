@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <mask id="teacher-cut">
+      <rect width="64" height="64" fill="#fff"/>
+      <g fill="#000">
+        <path d="M12 22c8-4 16-4 20 0 4-4 12-4 20 0v24c-8-4-16-4-20 0-4-4-12-4-20 0z"/>
+      </g>
+      <g fill="#fff">
+        <path d="M26 31l-5 5 5 5 2-2-3-3 3-3z"/>
+        <path d="M34 39h8v2h-8z"/>
+      </g>
+    </mask>
+  </defs>
+  <path d="M32 2 58 17v30L32 62 6 47V17Z" fill="currentColor" mask="url(#teacher-cut)"/>
+</svg>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChessClass — Python и шахматы в одном курсе</title>
+<meta name="description" content="Python и шахматы в одном курсе: задачи с автопроверкой, разбор партий на Stockfish, боты, турниры и карта навыков. Пилот для школ и кружков." />
+<meta name="keywords" content="ChessClass, Python и шахматы в одном курсе, IIRuChating, on-premise, локальный AI" />
+<link rel="canonical" href="https://iiruchating.ru/chessclass/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ChessClass" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://iiruchating.ru/chessclass/" />
+<meta property="og:title" content="ChessClass — Python и шахматы в одном курсе" />
+<meta property="og:description" content="Python и шахматы в одном курсе: задачи с автопроверкой, разбор партий на Stockfish, боты, турниры и карта навыков. Пилот для школ и кружков." />
+<meta property="og:image" content="https://iiruchating.ru/chessclass/assets/img/screens/python.png" />
+<meta name="twitter:card" content="summary" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "ChessClass",
+      "description": "Python и шахматы в одном курсе: задачи с автопроверкой, разбор партий на Stockfish, боты, турниры и карта навыков. Пилот для школ и кружков.",
+      "url": "https://iiruchating.ru/chessclass/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Linux, Windows, Docker",
+      "inLanguage": "ru",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IIRuChating",
+        "url": "https://iiruchating.ru/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "IIRuChating",
+          "item": "https://iiruchating.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ChessClass",
+          "item": "https://iiruchating.ru/chessclass/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="assets/img/web-app-manifest.json" />
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-cyrillic.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Manrope-cyrillic.woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/theme-m3.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/screenshots.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand brand--product" href="#top" aria-label="ChessClass — на главную">
+      <img class="brand__icon plogo" src="assets/img/products/chessclass.svg" alt="ChessClass" width="64" height="64" />
+      <span class="brand__name">ChessClass</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#features">Возможности</a>
+      <a class="nav__link" href="#tech">Как устроено</a>
+      <a class="nav__link" href="#status">Статус</a>
+      <a class="nav__link" href="#cta">Демо</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header__cta" href="mailto:info@iiruchating.ru">Запросить демо</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot"></span>ChessClass · v0.2.0 · пилот</p>
+        <h1 class="hero__title">Python и шахматы<br /><span class="grad">в одном курсе</span></h1>
+        <p class="hero__lead">Единая экосистема для школьников: Python-задачи с безопасной песочницей, шахматная лаборатория с разбором партий, конструктор ботов и карта навыков. Один профиль, один уровень и один LLM-ассистент на оба предмета.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#screens">Как это устроено</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg>
+            Все продукты IIRuChating
+          </a>
+        </div>
+
+        <ul class="hero__stats">
+          <li><b>16</b><span>заданий с автопроверкой</span></li>
+          <li><b>Stockfish 17.1</b><span>разбор партий и этюды</span></li>
+          <li><b>11</b><span>навыков в карте прогресса</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="pmark">
+          <img class="pmark__logo plogo" src="assets/img/products/chessclass.svg" alt="" width="120" height="120" />
+          <div class="pmark__body">
+            <b>ChessClass</b>
+            <span>Python и шахматы в одном курсе</span>
+            <div class="pmark__chips">
+              <span class="stack-chip">Python 3.12</span>
+              <span class="stack-chip">FastAPI</span>
+              <span class="stack-chip">React 19</span>
+              <span class="stack-chip">PostgreSQL 17</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Возможности</p>
+        <h2 class="section__title">ChessClass</h2>
+        <p class="section__lead">Единая экосистема для школьников: Python-задачи с безопасной песочницей, шахматная лаборатория с разбором партий, конструктор ботов и карта навыков. Один профиль, один уровень и один LLM-ассистент на оба предмета.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Python-задачи</h3>
+          <p>16 заданий с assert-тестами и лестницей подсказок. Код выполняется в RestrictedPython-песочнице: AST-отсечки, белый список импортов, лимиты памяти, времени и вывода.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Шахматная лаборатория</h3>
+          <p>Stockfish 17.1, инсайт позиции (факты движка + объяснение LLM), PGN-анализ с детектом блюндеров и SSE-прогресс.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Конструктор ботов</h3>
+          <p>Лестница random → greedy → minimax2 → Stockfish Elo 1400–1800, матчи на arq, Elo K=32 и лидерборд.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Карта навыков</h3>
+          <p>11 навыков, недельные EMA, spider-график и рекомендации по кросс-доменным связям.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Классы и учитель</h3>
+          <p>Инвайт-коды, групповой дашборд, назначения и отчёты. Роли student/teacher/admin/auditor, аудит действий и CSV-экспорт.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>LLM-шлюз</h3>
+          <p>RouterAI: DeepSeek, MiniMax, Beam и локальный fallback LM Studio. Квоты, бюджеты и FinOps по каждому вызову.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="tech">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Архитектура</p>
+        <h2 class="section__title">Один профиль на Python и шахматы</h2>
+        <p class="section__lead">Ученик видит один уровень и одну карту навыков. Под капотом — FastAPI и React, PostgreSQL с pgvector, Redis, Stockfish и фоновые задачи arq.</p>
+      </div>
+
+      <div class="split">
+        <div class="split__col">
+          <h3 class="split__title">Бэкенд</h3>
+          <ul class="checklist">
+            <li><b>Python 3.12 + FastAPI</b> — API, LLM-шлюз и домены Python/шахматы.</li>
+            <li><b>PostgreSQL 17 + pgvector</b> — профили, задания, партии, навыки и RAG.</li>
+            <li><b>Redis 7 + arq</b> — кэш, очереди и фоновые матчи/генерации.</li>
+            <li><b>Stockfish 17.1</b> — анализ позиций, боты и этюды.</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <h3 class="split__title">Клиент и эксплуатация</h3>
+          <ul class="checklist">
+            <li><b>React 19 + TypeScript</b> — Vite-фронтенд: классы, задания, доска, дашборд.</li>
+            <li><b>Docker Compose</b> — dev- и prod-стек, миграции Alembic, healthchecks.</li>
+            <li><b>LLM RouterAI</b> — DeepSeek / MiniMax / Beam + локальный LM Studio.</li>
+            <li><b>PDF и аудит</b> — отчёты родителям, CSV-экспорт и read-only аудитор.</li>
+          </ul>
+          <div class="stack-chips">
+            <span class="stack-chip">Python 3.12</span>
+            <span class="stack-chip">FastAPI</span>
+            <span class="stack-chip">React 19</span>
+            <span class="stack-chip">PostgreSQL 17</span>
+            <span class="stack-chip">pgvector</span>
+            <span class="stack-chip">Redis 7</span>
+            <span class="stack-chip">Stockfish 17.1</span>
+            <span class="stack-chip">Docker Compose</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="section section--alt" id="screens">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Интерфейс</p>
+        <h2 class="section__title">Скриншоты рабочего стенда</h2>
+        <p class="section__lead">Реальные экраны продукта, снятые на локальном развёртывании.
+        Клик — скриншот откроется в полном размере.</p>
+      </div>
+
+      <div class="cards shots">
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/python.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/python.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот ChessClass: Python-курс — 16 заданий с автопроверкой и уровнями" />
+            </a>
+            <figcaption>Python-курс — 16 заданий с автопроверкой и уровнями</figcaption>
+          </figure>
+        </article>
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/chess.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/chess.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот ChessClass: Шахматная лаборатория — доска, FEN и разбор позиции" />
+            </a>
+            <figcaption>Шахматная лаборатория — доска, FEN и разбор позиции</figcaption>
+          </figure>
+        </article>
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/skills.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/skills.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот ChessClass: Карта навыков — 11 навыков и недельные EMA" />
+            </a>
+            <figcaption>Карта навыков — 11 навыков и недельные EMA</figcaption>
+          </figure>
+        </article>
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/bots.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/bots.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот ChessClass: Конструктор ботов — код choose_move и рейтинг Elo" />
+            </a>
+            <figcaption>Конструктор ботов — код choose_move и рейтинг Elo</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="status">
+    <div class="container">
+      <div class="limits reveal">
+        <div>
+          <p class="eyebrow">Статус</p>
+          <h2 class="section__title">Пилот: 16 из 16 спринтов</h2>
+          <p class="section__lead">Версия 0.2.0 закрывает 16 спринтов: Python-песочница, шахматная лаборатория, боты, классы, аудит и PDF-отчёты. Впереди — PvP, Telegram и LMS-адаптеры.</p>
+        </div>
+        <ul class="limits__list">
+          <li>v0.2.0 — 16/16 спринтов, 21 миграция Alembic.</li>
+          <li>174 backend-теста, 5 frontend-тестов и 7 UI-e2e.</li>
+          <li>Классы, роли, аудит, PDF родителям и CSV/xAPI-экспорт.</li>
+          <li>Следующий этап — PvP, Telegram и LMS-адаптеры.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="cta">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2 class="section__title">Покажем ChessClass в деле</h2>
+          <p class="section__lead">
+            Развернём стенд на вашем железе или в вашем контуре и покажем, как продукт работает на ваших данных. Напишите — договоримся о демо.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="mailto:info@iiruchating.ru">Обсудить внедрение</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">Все продукты IIRuChating</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/img/logo-full.svg" alt="IIRuChating" width="240" height="96" />
+      <p>ChessClass — продукт бренда IIRuChating.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+      <a href="#features">Возможности</a>
+      <a href="#tech">Как устроено</a>
+      <a href="#status">Статус</a>
+      <a href="#cta">Демо</a>
+    </nav>
+    <div class="footer__meta">
+      <a href="mailto:info@iiruchating.ru">info@iiruchating.ru</a>
+      <a href="https://iiruchating.ru/">iiruchating.ru</a>
+      <a href="https://iiruchating.ru/privacy/">Политика конфиденциальности</a>
+      <span>© 2026 IIRuChating</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="/assets/js/consent.js" defer></script>
+</body>
+</html>

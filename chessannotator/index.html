@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChessAnnotator — Разбор шахматных партий с AI</title>
+<meta name="description" content="Загрузите PGN — получите разбор уровня гроссмейстера под ваш уровень. Stockfish находит факты, LLM пишет текст, валидатор проверяет варианты." />
+<meta name="keywords" content="ChessAnnotator, Разбор шахматных партий с AI, IIRuChating, on-premise, локальный AI" />
+<link rel="canonical" href="https://iiruchating.ru/chessannotator/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ChessAnnotator" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://iiruchating.ru/chessannotator/" />
+<meta property="og:title" content="ChessAnnotator — Разбор шахматных партий с AI" />
+<meta property="og:description" content="Загрузите PGN — получите разбор уровня гроссмейстера под ваш уровень. Stockfish находит факты, LLM пишет текст, валидатор проверяет варианты." />
+<meta property="og:image" content="https://iiruchating.ru/chessannotator/assets/img/screens/analysis.png" />
+<meta name="twitter:card" content="summary" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "ChessAnnotator",
+      "description": "Загрузите PGN — получите разбор уровня гроссмейстера под ваш уровень. Stockfish находит факты, LLM пишет текст, валидатор проверяет варианты.",
+      "url": "https://iiruchating.ru/chessannotator/",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Linux, Windows, Docker",
+      "inLanguage": "ru",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IIRuChating",
+        "url": "https://iiruchating.ru/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "IIRuChating",
+          "item": "https://iiruchating.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ChessAnnotator",
+          "item": "https://iiruchating.ru/chessannotator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="assets/img/web-app-manifest.json" />
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-cyrillic.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Manrope-cyrillic.woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/theme-m3.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/screenshots.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand brand--product" href="#top" aria-label="ChessAnnotator — на главную">
+      <img class="brand__icon plogo" src="assets/img/products/chessannotator.svg" alt="ChessAnnotator" width="64" height="64" />
+      <span class="brand__name">ChessAnnotator</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#features">Возможности</a>
+      <a class="nav__link" href="#tech">Как устроено</a>
+      <a class="nav__link" href="#status">Статус</a>
+      <a class="nav__link" href="#cta">Демо</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header__cta" href="mailto:info@iiruchating.ru">Запросить демо</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot"></span>ChessAnnotator · v1.2.0</p>
+        <h1 class="hero__title">Разбор партии<br /><span class="grad">уровня гроссмейстера</span></h1>
+        <p class="hero__lead">Загрузите PGN — получите связный комментарий, адаптированный под ваш уровень: новичок, клубный игрок или гроссмейстер. Stockfish находит факты, LLM пишет текст, валидатор проверяет каждый вариант.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#screens">Как это устроено</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg>
+            Все продукты IIRuChating
+          </a>
+        </div>
+
+        <ul class="hero__stats">
+          <li><b>3</b><span>уровня разбора</span></li>
+          <li><b>Stockfish 17</b><span>проверка каждого варианта</span></li>
+          <li><b>RU/EN</b><span>интерфейс, комментарии и PDF</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="pmark">
+          <img class="pmark__logo plogo" src="assets/img/products/chessannotator.svg" alt="" width="120" height="120" />
+          <div class="pmark__body">
+            <b>ChessAnnotator</b>
+            <span>Разбор шахматных партий с AI</span>
+            <div class="pmark__chips">
+              <span class="stack-chip">Python 3.12</span>
+              <span class="stack-chip">FastAPI</span>
+              <span class="stack-chip">React 19</span>
+              <span class="stack-chip">PostgreSQL 17</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Возможности</p>
+        <h2 class="section__title">ChessAnnotator</h2>
+        <p class="section__lead">Загрузите PGN — получите связный комментарий, адаптированный под ваш уровень: новичок, клубный игрок или гроссмейстер. Stockfish находит факты, LLM пишет текст, валидатор проверяет каждый вариант.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Три уровня</h3>
+          <p>Новичок — простой язык и базовые принципы. Клубный игрок — тактика, стратегия и альтернативы. Гроссмейстер — профессиональная терминология и исторический контекст.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Гибридный анализ</h3>
+          <p>Stockfish 17 даёт оценки и варианты, база аннотированных партий — контекст, LLM превращает факты в связный комментарий.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Валидатор</h3>
+          <p>Каждый вариант из ответа LLM прогоняется обратно через движок. Нелегальные и ошибочные ходы отбрасываются, текст переписывается.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Интерактивная доска</h3>
+          <p>Ходы можно перетаскивать, открывать варианты, возвращаться к партии. Рекомендованные ходы и ошибки рисуются стрелками.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Чат по партии</h3>
+          <p>«Почему это плохо?» — вопрос относится к выбранному ходу. Ответы стримятся через SSE и проходят ту же проверку.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>PDF и языки</h3>
+          <p>Экспорт разбора с диаграммами доски, русский и английский интерфейсы, комментарии и PDF.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="tech">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Архитектура</p>
+        <h2 class="section__title">Факты от движка, текст от LLM</h2>
+        <p class="section__lead">LLM не придумывает ходы: она объясняет факты, которые нашёл Stockfish. Валидатор проверяет каждый вариант и утверждение о позиции.</p>
+      </div>
+
+      <div class="split">
+        <div class="split__col">
+          <h3 class="split__title">Бэкенд</h3>
+          <ul class="checklist">
+            <li><b>Python 3.12 + FastAPI</b> — API, оркестрация анализа и стриминг.</li>
+            <li><b>Stockfish 17</b> — MultiPV, классификация ходов и кэш.</li>
+            <li><b>PostgreSQL 17 + pgvector</b> — партии, аннотации и RAG.</li>
+            <li><b>Redis + arq</b> — очереди, кэш и фоновые выгрузки.</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <h3 class="split__title">Клиент и эксплуатация</h3>
+          <ul class="checklist">
+            <li><b>React 19</b> — доска, чат, разбор и профиль.</li>
+            <li><b>LM Studio / DeepSeek</b> — локальная или облачная LLM под уровень.</li>
+            <li><b>OpenTelemetry/Grafana</b> — трейсы, метрики и логи.</li>
+            <li><b>Docker Compose</b> — PostgreSQL, Redis, API, воркер и фронтенд.</li>
+          </ul>
+          <div class="stack-chips">
+            <span class="stack-chip">Python 3.12</span>
+            <span class="stack-chip">FastAPI</span>
+            <span class="stack-chip">React 19</span>
+            <span class="stack-chip">PostgreSQL 17</span>
+            <span class="stack-chip">pgvector</span>
+            <span class="stack-chip">Stockfish 17</span>
+            <span class="stack-chip">Redis</span>
+            <span class="stack-chip">Docker Compose</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="section section--alt" id="screens">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Интерфейс</p>
+        <h2 class="section__title">Скриншоты рабочего стенда</h2>
+        <p class="section__lead">Реальные экраны продукта, снятые на локальном развёртывании.
+        Клик — скриншот откроется в полном размере.</p>
+      </div>
+
+      <div class="cards shots">
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/analysis.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/analysis.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот ChessAnnotator: Разбор партии — доска, оценки Stockfish и рекомендации" />
+            </a>
+            <figcaption>Разбор партии — доска, оценки Stockfish и рекомендации</figcaption>
+          </figure>
+        </article>
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/history.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/history.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот ChessAnnotator: История партий — сохранённые разборы и уровни" />
+            </a>
+            <figcaption>История партий — сохранённые разборы и уровни</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="status">
+    <div class="container">
+      <div class="limits reveal">
+        <div>
+          <p class="eyebrow">Статус</p>
+          <h2 class="section__title">Версия 1.2.0: полный сервис</h2>
+          <p class="section__lead">Версия 1.2.0 — это аккаунты, админка, PDF-экспорт, чат по партии, семантическая валидация и локализация RU/EN.</p>
+        </div>
+        <ul class="limits__list">
+          <li>v1.2.0 — 1000 backend-тестов и 129 frontend-тестов.</li>
+          <li>Три уровня, валидатор вариантов и семантическая проверка утверждений.</li>
+          <li>PDF с диаграммами, чат по партии и SSE-стриминг.</li>
+          <li>JWT, email-верификация, роли user/admin/auditor и аудит.</li>
+          <li>Free 50k / Pro 500k токенов в день; Stripe Checkout и Customer Portal.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="cta">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2 class="section__title">Покажем ChessAnnotator в деле</h2>
+          <p class="section__lead">
+            Развернём стенд на вашем железе или в вашем контуре и покажем, как продукт работает на ваших данных. Напишите — договоримся о демо.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="mailto:info@iiruchating.ru">Обсудить внедрение</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">Все продукты IIRuChating</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/img/logo-full.svg" alt="IIRuChating" width="240" height="96" />
+      <p>ChessAnnotator — продукт бренда IIRuChating.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+      <a href="#features">Возможности</a>
+      <a href="#tech">Как устроено</a>
+      <a href="#status">Статус</a>
+      <a href="#cta">Демо</a>
+    </nav>
+    <div class="footer__meta">
+      <a href="mailto:info@iiruchating.ru">info@iiruchating.ru</a>
+      <a href="https://iiruchating.ru/">iiruchating.ru</a>
+      <a href="https://iiruchating.ru/privacy/">Политика конфиденциальности</a>
+      <span>© 2026 IIRuChating</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="/assets/js/consent.js" defer></script>
+</body>
+</html>

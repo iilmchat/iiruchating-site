@@ -1,0 +1,6 @@
+/* Скриншоты рабочего стенда */
+.shots .card { padding: var(--md-sys-spacing-md, 16px); }
+.shots .card figure { margin: 0; display: grid; gap: 10px; }
+.shots .card img { width: 100%; height: auto; border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--md-sys-color-outline) 25%, transparent); }
+.shots .card figcaption { margin: 0; font-size: 14px; color: var(--md-sys-color-on-surface-variant); }

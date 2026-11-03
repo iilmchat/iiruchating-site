@@ -13,11 +13,15 @@ AI-ассистентом).
 
 ```
 .
-├── index.html                  # главная (единственная страница)
+├── index.html                  # главная (витрина продуктов)
 ├── 404.html                    # страница «не найдено»
 ├── robots.txt
 ├── sitemap.xml
 ├── .htaccess                   # Apache: 404, gzip, кэш, заголовки
+├── chessclass/                 # лендинг ChessClass (path-версия)
+├── teacher/                    # лендинг AI Teacher for Python
+├── chessannotator/             # лендинг ChessAnnotator
+├── vetassistant/               # лендинг VetAssistant
 └── assets/
     ├── css/
     │   ├── styles.css          # вёрстка лендинга
@@ -189,7 +193,7 @@ Redirect 301 / https://iiruchating.ru/
 
 | Домен | Что отдаёт | Сертификат |
 |-------|-----------|------------|
-| `iiruchating.ru` | сайт компании и бренда (этот проект) | Let's Encrypt ✓ |
+| `iiruchating.ru` | витрина и лендинги продуктов (`/chessclass/`, `/teacher/`, `/chessannotator/`, `/vetassistant/`) | Let's Encrypt ✓ |
 | `www.iiruchating.ru` | 301 → `iiruchating.ru` | — |
 | `iiruchating.online` | зеркало того же сайта (canonical → `iiruchating.ru`) | Let's Encrypt ✓ |
 | `ruchting.ru` | 301 → `iiruchating.ru` (короткий алиас) | Let's Encrypt ✓ |

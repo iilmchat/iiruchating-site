@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VetAssistant — AI-ветеринарный ассистент для владельцев питомцев</title>
+<meta name="description" content="VetAssistant — AI-ассистент для владельцев кошек и собак: отвечает по MSD Vet Manual, помогает оценить симптомы, ведёт записи на приём и напоминания. Не заменяет ветеринарного врача." />
+<meta name="keywords" content="VetAssistant, AI-ветеринарный ассистент для владельцев питомцев, IIRuChating, on-premise, локальный AI" />
+<link rel="canonical" href="https://iiruchating.ru/vetassistant/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VetAssistant" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://iiruchating.ru/vetassistant/" />
+<meta property="og:title" content="VetAssistant — AI-ветеринарный ассистент для владельцев питомцев" />
+<meta property="og:description" content="VetAssistant — AI-ассистент для владельцев кошек и собак: отвечает по MSD Vet Manual, помогает оценить симптомы, ведёт записи на приём и напоминания. Не заменяет ветеринарного врача." />
+<meta property="og:image" content="https://iiruchating.ru/vetassistant/assets/img/screens/chat.png" />
+<meta name="twitter:card" content="summary" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "VetAssistant",
+      "description": "VetAssistant — AI-ассистент для владельцев кошек и собак: отвечает по MSD Vet Manual, помогает оценить симптомы, ведёт записи на приём и напоминания. Не заменяет ветеринарного врача.",
+      "url": "https://iiruchating.ru/vetassistant/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Linux, Windows, Docker",
+      "inLanguage": "ru",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IIRuChating",
+        "url": "https://iiruchating.ru/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "IIRuChating",
+          "item": "https://iiruchating.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "VetAssistant",
+          "item": "https://iiruchating.ru/vetassistant/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="assets/img/web-app-manifest.json" />
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-cyrillic.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Manrope-cyrillic.woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/theme-m3.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/screenshots.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand brand--product" href="#top" aria-label="VetAssistant — на главную">
+      <img class="brand__icon plogo" src="assets/img/products/vetassistant.svg" alt="VetAssistant" width="64" height="64" />
+      <span class="brand__name">VetAssistant</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#features">Возможности</a>
+      <a class="nav__link" href="#tech">Как устроено</a>
+      <a class="nav__link" href="#status">Статус</a>
+      <a class="nav__link" href="#cta">Доступ</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header__cta" href="https://ai-pets.ru/">Открыть приложение</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot"></span>VetAssistant · v1.0.0 · production</p>
+        <h1 class="hero__title">Помощь с питомцем<br /><span class="grad">до визита к врачу</span></h1>
+        <p class="hero__lead">Опишите симптом или задайте вопрос: ассистент опирается на MSD Vet Manual, помнит контекст беседы, ведёт записи на приём и напоминания. Модель работает на нашем сервере, без внешних LLM-API — данные питомца не уходят в сторонние сервисы.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://ai-pets.ru/">Открыть приложение</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg>
+            Все продукты IIRuChating
+          </a>
+        </div>
+
+        <ul class="hero__stats">
+          <li><b>Qwen3-8B</b><span>локальная модель на CPU, без внешних LLM-API</span></li>
+          <li><b>MSD Vet Manual</b><span>RAG по ветеринарной базе знаний</span></li>
+          <li><b>Записи и напоминания</b><span>агентные действия прямо в диалоге</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="pmark">
+          <img class="pmark__logo plogo" src="assets/img/products/vetassistant.svg" alt="" width="120" height="120" />
+          <div class="pmark__body">
+            <b>VetAssistant</b>
+            <span>AI-ветеринарный ассистент для владельцев питомцев</span>
+            <div class="pmark__chips">
+              <span class="stack-chip">Qwen3-8B</span>
+              <span class="stack-chip">QLoRA</span>
+              <span class="stack-chip">GGUF</span>
+              <span class="stack-chip">llama.cpp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Возможности</p>
+        <h2 class="section__title">VetAssistant</h2>
+        <p class="section__lead">Опишите симптом или задайте вопрос: ассистент опирается на MSD Vet Manual, помнит контекст беседы, ведёт записи на приём и напоминания. Модель работает на нашем сервере, без внешних LLM-API — данные питомца не уходят в сторонние сервисы.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Ответы по базе знаний</h3>
+          <p>RAG находит релевантные фрагменты MSD Vet Manual и использует их в ответе. База собирается из TXT и PDF, хранится в ChromaDB.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Помнит контекст беседы</h3>
+          <p>Ассистент ведёт многошаговый диалог и учитывает историю: можно уточнять симптомы, возвращаться к предыдущим вопросам и сравнивать состояние питомца.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Записи на приём</h3>
+          <p>Попросите записать питомца — агентный цикл создаст запись с датой и временем и покажет её в боковой панели. Это запись внутри приложения, а не бронь в клинике.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Напоминания</h3>
+          <p>Ассистент сохраняет напоминания о лекарствах и процедурах. Напоминания привязаны к пользователю и видны только ему.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Веб и Telegram</h3>
+          <p>Один ассистент в браузере и в Telegram-боте: общая история, стриминг ответов и те же агентные действия.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Безопасность</h3>
+          <p>Промпт и safety-проверки удерживают модель от назначения опасных препаратов и дозировок. При тревожных симптомах ассистент направляет в клинику.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="tech">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Архитектура</p>
+        <h2 class="section__title">Локальная модель, RAG и агентные действия</h2>
+        <p class="section__lead">Qwen3-8B после QLoRA-дообучения работает на CPU через llama.cpp. RAG подключает MSD Vet Manual, а агентный цикл выполняет записи и напоминания — без внешних LLM-API.</p>
+      </div>
+
+      <div class="split">
+        <div class="split__col">
+          <h3 class="split__title">AI и знания</h3>
+          <ul class="checklist">
+            <li><b>Qwen3-8B + QLoRA</b> — дообучение на 7 448 диалогах, экспорт в GGUF Q4_K_M.</li>
+            <li><b>llama.cpp на CPU</b> — инференс без GPU, 8–16 ГБ RAM; GPU-слои опционально.</li>
+            <li><b>RAG + ChromaDB</b> — MSD Vet Manual: TXT/PDF, эмбеддинги и поиск по базе.</li>
+            <li><b>Safety-промпт</b> — отказ от опасных препаратов и дозировок, эскалация к врачу.</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <h3 class="split__title">Сервис и интерфейсы</h3>
+          <ul class="checklist">
+            <li><b>FastAPI + SSE</b> — OpenAI-совместимый API со стримингом ответов.</li>
+            <li><b>React 19 + Telegram</b> — веб-чат и бот с общей историей и агентными действиями.</li>
+            <li><b>JWT + PostgreSQL</b> — мультитенантность и изоляция данных по user_id.</li>
+            <li><b>Docker + Caddy</b> — production-стек, HTTPS и резервные копии.</li>
+          </ul>
+          <div class="stack-chips">
+            <span class="stack-chip">Qwen3-8B</span>
+            <span class="stack-chip">QLoRA</span>
+            <span class="stack-chip">GGUF</span>
+            <span class="stack-chip">llama.cpp</span>
+            <span class="stack-chip">FastAPI</span>
+            <span class="stack-chip">RAG</span>
+            <span class="stack-chip">ChromaDB</span>
+            <span class="stack-chip">React 19</span>
+            <span class="stack-chip">PostgreSQL</span>
+            <span class="stack-chip">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="section section--alt" id="screens">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Интерфейс</p>
+        <h2 class="section__title">Скриншоты рабочего стенда</h2>
+        <p class="section__lead">Реальные экраны продукта, снятые на локальном развёртывании.
+        Клик — скриншот откроется в полном размере.</p>
+      </div>
+
+      <div class="cards shots">
+        <article class="card reveal">
+          <figure>
+            <a href="assets/img/screens/chat.png" target="_blank" rel="noopener">
+              <img src="assets/img/screens/chat.png" width="1440" height="900" loading="lazy"
+                   alt="Скриншот VetAssistant: Чат с ассистентом — ответ по MSD Vet Manual, запись на приём и напоминание" />
+            </a>
+            <figcaption>Чат с ассистентом — ответ по MSD Vet Manual, запись на приём и напоминание</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="status">
+    <div class="container">
+      <div class="limits reveal">
+        <div>
+          <p class="eyebrow">Статус</p>
+          <h2 class="section__title">v1.0.0: production на ai-pets.ru</h2>
+          <p class="section__lead">Ассистент работает в production: веб-интерфейс, Telegram-бот, JWT-авторизация, HTTPS и резервные копии. Регистрация закрыта — доступ выдаётся по запросу.</p>
+        </div>
+        <ul class="limits__list">
+          <li>v1.0.0 Production Ready: 569 backend- и 29 frontend-тестов.</li>
+          <li>PetQA-Bench: 2000/2000 ответов, средняя оценка 4.52/5 (LLM-Judge).</li>
+          <li>Router &amp; Triage: precision/recall/F1 = 1.0 на бенчмарке экстренных случаев.</li>
+          <li>Модель 5.03 ГБ, CPU-инференс, 8–16 ГБ RAM.</li>
+          <li>Safety-набор пока небольшой (2 кейса) — это smoke-тест, а не полный бенчмарк.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="cta">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2 class="section__title">Попробуйте VetAssistant</h2>
+          <p class="section__lead">
+            Приложение работает на ai-pets.ru. Регистрация закрыта — оставьте заявку, и мы откроем доступ. Если питомцу плохо, не ждите ответа ассистента: обратитесь в ветеринарную клинику.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="https://ai-pets.ru/">Открыть приложение</a>
+          <a class="btn btn--ghost" href="mailto:info@iiruchating.ru?subject=VetAssistant%3A%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0">Запросить доступ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/img/logo-full.svg" alt="IIRuChating" width="240" height="96" />
+      <p>VetAssistant — продукт бренда IIRuChating.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+      <a href="#features">Возможности</a>
+      <a href="#tech">Как устроено</a>
+      <a href="#status">Статус</a>
+      <a href="#cta">Доступ</a>
+    </nav>
+    <div class="footer__meta">
+      <a href="mailto:info@iiruchating.ru">info@iiruchating.ru</a>
+      <a href="https://iiruchating.ru/">iiruchating.ru</a>
+      <a href="https://iiruchating.ru/privacy/">Политика конфиденциальности</a>
+      <span>© 2026 IIRuChating</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="/assets/js/consent.js" defer></script>
+</body>
+</html>

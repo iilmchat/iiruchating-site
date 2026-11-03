@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <mask id="vetassistant-cut">
+      <rect width="64" height="64" fill="#fff"/>
+      <g fill="#000">
+        <ellipse cx="32" cy="42" rx="12" ry="9"/>
+        <circle cx="18" cy="29" r="5.5"/>
+        <circle cx="27" cy="22" r="5.5"/>
+        <circle cx="37" cy="22" r="5.5"/>
+        <circle cx="46" cy="29" r="5.5"/>
+      </g>
+    </mask>
+  </defs>
+  <path d="M32 2 58 17v30L32 62 6 47V17Z" fill="currentColor" mask="url(#vetassistant-cut)"/>
+</svg>

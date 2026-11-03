@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>QwenForge — QLoRA → GGUF: конвейер дообучения моделей Qwen</title>
+<meta name="description" content="QwenForge — CLI-конвейер для Qwen: подготовка данных, QLoRA/CPT, экспорт в GGUF и проверка в llama.cpp. AMD ROCm и NVIDIA CUDA, режим для 8–12 ГБ VRAM." />
+<meta name="keywords" content="QwenForge, QLoRA → GGUF: конвейер дообучения моделей Qwen, IIRuChating, on-premise, локальный AI" />
+<link rel="canonical" href="https://iiruchating.ru/qwenforge/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="QwenForge" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://iiruchating.ru/qwenforge/" />
+<meta property="og:title" content="QwenForge — QLoRA → GGUF: конвейер дообучения моделей Qwen" />
+<meta property="og:description" content="QwenForge — CLI-конвейер для Qwen: подготовка данных, QLoRA/CPT, экспорт в GGUF и проверка в llama.cpp. AMD ROCm и NVIDIA CUDA, режим для 8–12 ГБ VRAM." />
+<meta property="og:image" content="https://iiruchating.ru/qwenforge/assets/img/logo-icon-512.png" />
+<meta name="twitter:card" content="summary" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "QwenForge",
+      "description": "QwenForge — CLI-конвейер для Qwen: подготовка данных, QLoRA/CPT, экспорт в GGUF и проверка в llama.cpp. AMD ROCm и NVIDIA CUDA, режим для 8–12 ГБ VRAM.",
+      "url": "https://iiruchating.ru/qwenforge/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux, Windows, Docker",
+      "inLanguage": "ru",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IIRuChating",
+        "url": "https://iiruchating.ru/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "IIRuChating",
+          "item": "https://iiruchating.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "QwenForge",
+          "item": "https://iiruchating.ru/qwenforge/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="assets/img/web-app-manifest.json" />
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-cyrillic.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Manrope-cyrillic.woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/theme-m3.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand brand--product" href="#top" aria-label="QwenForge — на главную">
+      <img class="brand__icon plogo" src="assets/img/products/qwenforge.svg" alt="QwenForge" width="64" height="64" />
+      <span class="brand__name">QwenForge</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#features">Возможности</a>
+      <a class="nav__link" href="#tech">Как устроено</a>
+      <a class="nav__link" href="#status">Статус</a>
+      <a class="nav__link" href="#cta">Доступ</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header__cta" href="mailto:info@iiruchating.ru?subject=QwenForge%3A%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0">Запросить доступ</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot"></span>QwenForge · v0.3.0 · stable</p>
+        <h1 class="hero__title">От датасета<br /><span class="grad">до GGUF-модели</span></h1>
+        <p class="hero__lead">QwenForge ведёт модель Qwen через весь цикл: приводит датасет к chat template, дообучает QLoRA или CPT, экспортирует в GGUF и проверяет запуск в llama.cpp. Один CLI вместо самодельных скриптов.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#tech">Как устроено</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg>
+            Все продукты IIRuChating
+          </a>
+        </div>
+
+        <ul class="hero__stats">
+          <li><b>3 команды</b><span>prepare-data, train, export-gguf</span></li>
+          <li><b>316 тестов</b><span>pipeline-тесты и 3 gated smoke</span></li>
+          <li><b>8–12 ГБ VRAM</b><span>профили AMD, CUDA и low-vram</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="pmark">
+          <img class="pmark__logo plogo" src="assets/img/products/qwenforge.svg" alt="" width="120" height="120" />
+          <div class="pmark__body">
+            <b>QwenForge</b>
+            <span>QLoRA → GGUF: конвейер дообучения моделей Qwen</span>
+            <div class="pmark__chips">
+              <span class="stack-chip">Python 3.10+</span>
+              <span class="stack-chip">Unsloth</span>
+              <span class="stack-chip">QLoRA</span>
+              <span class="stack-chip">GGUF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Возможности</p>
+        <h2 class="section__title">QwenForge</h2>
+        <p class="section__lead">QwenForge ведёт модель Qwen через весь цикл: приводит датасет к chat template, дообучает QLoRA или CPT, экспортирует в GGUF и проверяет запуск в llama.cpp. Один CLI вместо самодельных скриптов.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Подготовка данных</h3>
+          <p>JSONL, CSV и Parquet → Alpaca, ShareGPT, OpenAI chat или tool-calling. Chat template Qwen применяется автоматически, с fallback на ChatML.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>QLoRA и CPT</h3>
+          <p>SFT-дообучение или continued pre-training через Unsloth, PEFT и TRL. 4-bit NF4, double quantization и all-linear LoRA.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Экспорт в GGUF</h3>
+          <p>save_pretrained_gguf или fallback через convert_hf_to_gguf.py и llama-quantize. Восемь квантований, от f16 до q3_k_m.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>AMD и NVIDIA</h3>
+          <p>Профили для RX 9060 XT 16 ГБ (ROCm) и RTX 3060 12 ГБ (CUDA). Для 8 ГБ есть low-vram с уменьшенным seq_len и LoRA.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Проверки до запуска</h3>
+          <p>doctor проверяет ROCm/CUDA, VRAM и llama.cpp, pre-flight оценка VRAM ловит OOM до старта обучения.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Воспроизводимость</h3>
+          <p>YAML + Pydantic, seed, manifest.json с версиями и артефактами. Docker-образы для CI и GPU.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="tech">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Архитектура</p>
+        <h2 class="section__title">Python, Unsloth и llama.cpp</h2>
+        <p class="section__lead">CLI на Typer и Pydantic управляет пайплайном: datasets и transformers готовят данные, Unsloth обучает адаптер, llama.cpp квантует и проверяет GGUF.</p>
+      </div>
+
+      <div class="split">
+        <div class="split__col">
+          <h3 class="split__title">Обучение</h3>
+          <ul class="checklist">
+            <li><b>Unsloth</b> — QLoRA для AMD ROCm и NVIDIA CUDA, CPU-fallback.</li>
+            <li><b>PEFT + TRL</b> — SFT и CPT, 4-bit NF4, double quantization.</li>
+            <li><b>Профили VRAM</b> — amd 16 ГБ, cuda 12 ГБ, low-vram 8 ГБ.</li>
+            <li><b>Pre-flight</b> — проверка VRAM и зависимостей до обучения.</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <h3 class="split__title">Данные и экспорт</h3>
+          <ul class="checklist">
+            <li><b>prepare-data</b> — JSONL/CSV/Parquet → Qwen chat template.</li>
+            <li><b>export-gguf</b> — 8 квантований, проверка запуска в llama.cpp.</li>
+            <li><b>Manifest</b> — версии, seed и артефакты каждого запуска.</li>
+            <li><b>Docker + CI</b> — CPU smoke на 0.5B, GPU-образы ROCm/CUDA.</li>
+          </ul>
+          <div class="stack-chips">
+            <span class="stack-chip">Python 3.10+</span>
+            <span class="stack-chip">Unsloth</span>
+            <span class="stack-chip">QLoRA</span>
+            <span class="stack-chip">GGUF</span>
+            <span class="stack-chip">llama.cpp</span>
+            <span class="stack-chip">ROCm</span>
+            <span class="stack-chip">CUDA</span>
+            <span class="stack-chip">Pydantic</span>
+            <span class="stack-chip">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section class="section" id="status">
+    <div class="container">
+      <div class="limits reveal">
+        <div>
+          <p class="eyebrow">Статус</p>
+          <h2 class="section__title">v0.3.0: stable, 316 тестов</h2>
+          <p class="section__lead">Конвейер проверен на реальном датасете: 1000 партий Lichess, SFT за 119 минут на RTX 3060, GGUF q4_k_m на 4.46 ГБ.</p>
+        </div>
+        <ul class="limits__list">
+          <li>v0.3.0 stable: полный цикл prepare-data → train → export-gguf.</li>
+          <li>316 pipeline-тестов и 3 gated smoke на GPU.</li>
+          <li>E2E: 1000 партий, loss 1.60 → 0.38, peak VRAM 5.6 ГБ, 6.2 t/s.</li>
+          <li>Поддержка Qwen2.5 0.5B–32B и Qwen3 0.6B–14B.</li>
+          <li>Лицензия proprietary, репозиторий приватный.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="cta">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2 class="section__title">QwenForge: от датасета до GGUF</h2>
+          <p class="section__lead">
+            Репозиторий приватный — доступ выдаётся по запросу. Расскажите о модели и данных: подскажем профиль GPU, формат датасета и квантование.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="mailto:info@iiruchating.ru?subject=QwenForge%3A%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0">Запросить доступ</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">Все продукты IIRuChating</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/img/logo-full.svg" alt="IIRuChating" width="240" height="96" />
+      <p>QwenForge — продукт бренда IIRuChating.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+      <a href="#features">Возможности</a>
+      <a href="#tech">Как устроено</a>
+      <a href="#status">Статус</a>
+      <a href="#cta">Доступ</a>
+    </nav>
+    <div class="footer__meta">
+      <a href="mailto:info@iiruchating.ru">info@iiruchating.ru</a>
+      <a href="https://iiruchating.ru/">iiruchating.ru</a>
+      <a href="https://iiruchating.ru/privacy/">Политика конфиденциальности</a>
+      <span>© 2026 IIRuChating</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="/assets/js/consent.js" defer></script>
+</body>
+</html>

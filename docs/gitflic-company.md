@@ -53,10 +53,10 @@
 
 ## Дополнительные продукты и R&D
 
-- **IIChatTools** — мост инструментов для локальных LLM: 70+ инструментов, multi-agent сценарии, approvals и работа с файлами.
+- **IIChatTools** — мост инструментов для локальных LLM: 73 инструмента, multi-agent сценарии, approvals и работа с файлами.
 - **ChessAnnotator** — ассистент-комментатор шахматных партий: Stockfish, LLM и валидатор, три уровня разбора.
 - **AI Teacher for Python** — интерактивный учитель Python для школьников 10–17 лет: три уровня помощи, безопасная песочница, классы и прогресс.
-- **VetAssistant** — исследовательский ветеринарный AI-ассистент на локальной модели Qwen3-8B.
+- **VetAssistant** — AI-ветеринарный ассистент для владельцев питомцев: v1.0.0, production на ai-pets.ru.
 - **Infocom LM Chat** — SPA-чат с AI-интеграцией, RAG, приватными чатами и админ-панелью.
 - **AI DSH Bridge** — OpenAI-совместимый шлюз к DeepSeek Harness.
 
@@ -91,10 +91,11 @@
 | `ai-ticketbuyer` | AI Ticket Buyer — персональный ассистент по театрам и концертам в Москве | MVP в работе; функции E1–E13 | Next.js 16, React 19, TypeScript, PostgreSQL, BullMQ/Redis, Telegram/MAX, Resend; без checkout и автопокупки | Приватный |
 | `ai-workflow-builder` | AI Workflow Builder — визуальный конструктор AI-сценариев | v0.11.1, активная разработка | NestJS 12, React 19, PostgreSQL 17 + pgvector, S3, OpenTelemetry, BullMQ/Redis, Docker; 22 типа узлов, MCP | Публичный |
 | `ai-dzenwriter` | DzenWriter — редакционный AI-конвейер для статей в Дзен | Внутренний инструмент; E1–E11, пилот | Node.js 24, pnpm, PostgreSQL, React, Docker; факт-гейт, версии, аудит, ручная публикация | Приватный |
-| `IIChatTools` | Мост инструментов для локальных LLM (LM Studio) | v2.2.0, активная разработка | .NET 10 LTS, 70+ инструментов, multi-agent, SSE, approvals | Публичный |
+| `IIChatTools` | Мост инструментов для локальных LLM (LM Studio) | v2.2.0, активная разработка | .NET 10 LTS, 73 инструмента, multi-agent, SSE, approvals | Публичный |
+| `QwenForge` | CLI-конвейер QLoRA → GGUF для моделей Qwen | v0.3.0, stable | Python 3.10+, Unsloth, PEFT/TRL, llama.cpp, ROCm/CUDA, Docker | Приватный |
 | `ai-chess-annotator` | ChessAnnotator — ассистент-комментатор шахматных партий | v1.2.0 | Python 3.12, FastAPI, React 19, PostgreSQL 17 + pgvector, Redis, Stockfish 17, LM Studio/DeepSeek, arq, OpenTelemetry/Grafana | Приватный |
 | `ai-teacher_python` | AI Teacher for Python — учитель Python для школьников 10–17 лет | v0.2.0 «Classroom» | Python 3.12, FastAPI, React 19, PostgreSQL 17 + pgvector, Redis, DeepSeek/LM Studio; песочница RestrictedPython | Приватный |
-| `ai_VetAssistant` | VetAssistant — исследовательский ветеринарный AI-ассистент | Прототип | Qwen3-8B GGUF, llama.cpp/Ollama, Unsloth + QLoRA | Приватный |
+| `ai_VetAssistant` | VetAssistant — AI-ветеринарный ассистент для владельцев питомцев | v1.0.0, production на ai-pets.ru | Qwen3-8B GGUF, QLoRA, llama.cpp, RAG MSD Vet Manual, FastAPI, React 19 | Приватный |
 | `infocom-lm-chat` | Infocom LM Chat — SPA-чат с AI-интеграцией, RAG, приватными чатами и админкой | v6.2 | Vanilla JS, .NET Core API, MSSQL, LM Studio; MIT | Публичный |
 | `ai_dsh_bridge` | AI DSH Bridge — OpenAI-совместимый шлюз к DeepSeek Harness | v0.6.1 scaffold | Node.js 22, TypeScript, pnpm, Chrome/CDP; MIT | Публичный |
 | `ai-brand` | Брендкит IIRuChating | v1.1 | Логотип, палитра Material 3, шрифты, favicon, PWA-манифест | Публичный |

@@ -22,6 +22,8 @@ AI-ассистентом).
 ├── teacher/                    # лендинг AI Teacher for Python
 ├── chessannotator/             # лендинг ChessAnnotator
 ├── vetassistant/               # лендинг VetAssistant
+├── iichattools/                # лендинг IIChatTools
+├── qwenforge/                  # лендинг QwenForge
 └── assets/
     ├── css/
     │   ├── styles.css          # вёрстка лендинга
@@ -193,7 +195,7 @@ Redirect 301 / https://iiruchating.ru/
 
 | Домен | Что отдаёт | Сертификат |
 |-------|-----------|------------|
-| `iiruchating.ru` | витрина и лендинги продуктов (`/chessclass/`, `/teacher/`, `/chessannotator/`, `/vetassistant/`) | Let's Encrypt ✓ |
+| `iiruchating.ru` | витрина и лендинги продуктов (`/chessclass/`, `/teacher/`, `/chessannotator/`, `/vetassistant/`, `/iichattools/`, `/qwenforge/`) | Let's Encrypt ✓ |
 | `www.iiruchating.ru` | 301 → `iiruchating.ru` | — |
 | `iiruchating.online` | зеркало того же сайта (canonical → `iiruchating.ru`) | Let's Encrypt ✓ |
 | `ruchting.ru` | 301 → `iiruchating.ru` (короткий алиас) | Let's Encrypt ✓ |

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <mask id="iichattools-cut">
+      <rect width="64" height="64" fill="#fff"/>
+      <g fill="#000" stroke="#fff" stroke-width="2.6" stroke-linejoin="round">
+        <path d="M32 10 46 24 32 38 18 24Z"/>
+        <path d="M32 26 46 40 32 54 18 40Z"/>
+        <path d="M32 18 42 32 32 46 22 32Z"/>
+      </g>
+    </mask>
+  </defs>
+  <path d="M32 2 58 17v30L32 62 6 47V17Z" fill="currentColor" mask="url(#iichattools-cut)"/>
+</svg>

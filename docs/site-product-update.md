@@ -42,8 +42,8 @@
 
 | Инструмент | Что делает | Статус | Ссылка |
 |------------|------------|--------|--------|
-| **IIChatTools** | Мост инструментов для локальных LLM: 70+ инструментов, multi-agent, approvals | v2.2.0 | репозиторий |
-| **QwenForge** | CLI-конвейер QLoRA → GGUF для Qwen: подготовка данных, обучение, экспорт | v0.1.0 · beta | репозиторий |
+| **IIChatTools** | Мост инструментов для локальных LLM: 73 инструмента, multi-agent, approvals | v2.2.0 | `iiruchating.ru/iichattools/` + GitHub |
+| **QwenForge** | CLI-конвейер QLoRA → GGUF для Qwen: подготовка данных, обучение, экспорт | v0.3.0 · stable | `iiruchating.ru/qwenforge/`, доступ по запросу |
 
 ### Не выносим в публичную витрину
 
@@ -57,7 +57,7 @@
 
 1. **Hero** — «AI-продукты для работы, безопасности, обучения, контента и питомцев». Счётчик «9 продуктов», визуал 2×4 + широкая плитка VetAssistant.
 2. **Продукты** — 5 основных карточек в текущем формате (AI Ru Chating — широкая) + блок «Новые направления» с 3 компактными карточками (ChessClass, AI Teacher, ChessAnnotator) + блок «AI-ветеринария» с VetAssistant.
-3. **Для разработчиков** — компактная полоса с IIChatTools и QwenForge, ссылки на репозитории.
+3. **Для разработчиков** — компактная полоса с IIChatTools и QwenForge, ссылки на лендинги и репозиторий.
 4. **Принципы** — обновить формулировки: local-first, on-premise, human-in-the-loop, проверяемые факты.
 5. **Бренд** — без изменений по смыслу, при возможности добавить иконки новых продуктов.
 6. **Контакты** — «Проведём демо на ваших данных» вместо «Покажем любой из продуктов в вашем контуре» (часть продуктов — облачные).
@@ -215,44 +215,42 @@
 
 ### IIChatTools
 
-**Статус:** `v2.2.0`
+**Статус:** `v2.2.0 · active development`
 
-**Текст:** Даёт локальной модели инструменты разработчика: файлы, Git, HTTP, почту, поиск и multi-agent сценарии. Работает с LM Studio, поддерживает approvals и SSE.
+**Текст:** Даёт локальной модели инструменты разработчика: файлы, Git/GitHub, HTTP, SQL, почту, браузер, RAG и multi-agent сценарии. Работает с LM Studio, поддерживает approvals, SSE и аудит.
 
 **Пункты:**
-- 70+ инструментов для LLM
-- Multi-agent сценарии
-- Approvals и безопасность
-- .NET 10 LTS
+- 73 инструмента для LLM
+- 7 суб-агентов: Debate, Orchestrator-Worker, Reflection
+- Approvals, whitelist и TTL-сессии
+- .NET 10 LTS, MSSQL/SQLite, Docker
+- 1216 из 1224 тестов
 
-**Ссылка:** репозиторий
+**Ссылка:** Сайт продукта → `iiruchating.ru/iichattools/`, репозиторий → GitHub
 
 ---
 
 ### QwenForge
 
-**Статус:** `v0.1.0 · beta`
+**Статус:** `v0.3.0 · stable`
 
-**Текст:** CLI-конвейер для дообучения Qwen: подготовка данных, QLoRA/CPT, экспорт в GGUF и проверка в llama.cpp. Работает на AMD ROCm и NVIDIA CUDA, есть режим для 12 ГБ VRAM.
+**Текст:** CLI-конвейер для дообучения Qwen: подготовка данных, QLoRA/CPT, экспорт в GGUF и проверка в llama.cpp. Работает на AMD ROCm и NVIDIA CUDA, есть режим для 8–12 ГБ VRAM.
 
 **Пункты:**
 - `prepare-data`, `train`, `export-gguf`
 - SFT и Continued Pre-Training
-- AMD ROCm и NVIDIA CUDA
-- Low-VRAM режим
+- AMD ROCm и NVIDIA CUDA, low-vram
+- 316 pipeline-тестов
+- 8 квантований GGUF
 
-**Ссылка:** репозиторий
+**Ссылка:** Сайт продукта → `iiruchating.ru/qwenforge/`, репозиторий приватный — доступ по запросу
 
 ---
 
 ## 5. Что нужно создать
 
-- **Иконки новых продуктов** в стиле брендкита: ChessClass, AI Teacher, ChessAnnotator, QwenForge, IIChatTools. Временно можно использовать брендовую иконку.
-- **Подсайты** для новых продуктов — по желанию, вторым этапом:
-  - `ai-chessclass.iiruchating.ru`
-  - `ai-teacher.iiruchating.ru`
-  - `ai-chessannotator.iiruchating.ru`
-  - `ai-qwenforge.iiruchating.ru`
+- **Иконки продуктов** в стиле брендкита: ChessClass, AI Teacher, ChessAnnotator, VetAssistant, QwenForge, IIChatTools — готовы.
+- **Лендинги продуктов** опубликованы как path-разделы: `/chessclass/`, `/teacher/`, `/chessannotator/`, `/vetassistant/`, `/iichattools/`, `/qwenforge/`.
 - **Ссылки GitFlic** — после создания компании и переноса репозиториев.
 
 ---
@@ -271,14 +269,15 @@
 
 ### Этап 2 — инструменты и ссылки
 
-- Добавить блок «Для разработчиков»: IIChatTools, QwenForge.
+- Блок «Для разработчиков» добавлен: IIChatTools, QwenForge.
+- Лендинги инструментов опубликованы: `iiruchating.ru/iichattools/`, `iiruchating.ru/qwenforge/`.
 - Добавить GitFlic-ссылку в подвал и «Принципы».
 - Обновить брендкит до v1.2 (или убрать версию из текста).
 
 ### Этап 3 — подсайты новых продуктов
 
-- Создать лендинги для ChessClass, AI Teacher, ChessAnnotator, QwenForge.
-- Лендинг VetAssistant опубликован: `iiruchating.ru/vetassistant/`.
+- Создать лендинги для ChessClass, AI Teacher, ChessAnnotator.
+- Лендинги VetAssistant, IIChatTools и QwenForge опубликованы.
 - Подключить домены и SSL.
 - Обновить ссылки в карточках.
 

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IIChatTools — Локальные LLM с инструментами разработчика</title>
+<meta name="description" content="IIChatTools — self-hosted мост между локальной LLM в LM Studio и средой разработчика: 73 инструмента, multi-agent паттерны, approvals, RAG и аудит. .NET 10, Docker." />
+<meta name="keywords" content="IIChatTools, Локальные LLM с инструментами разработчика, IIRuChating, on-premise, локальный AI" />
+<link rel="canonical" href="https://iiruchating.ru/iichattools/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="IIChatTools" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://iiruchating.ru/iichattools/" />
+<meta property="og:title" content="IIChatTools — Локальные LLM с инструментами разработчика" />
+<meta property="og:description" content="IIChatTools — self-hosted мост между локальной LLM в LM Studio и средой разработчика: 73 инструмента, multi-agent паттерны, approvals, RAG и аудит. .NET 10, Docker." />
+<meta property="og:image" content="https://iiruchating.ru/iichattools/assets/img/logo-icon-512.png" />
+<meta name="twitter:card" content="summary" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "IIChatTools",
+      "description": "IIChatTools — self-hosted мост между локальной LLM в LM Studio и средой разработчика: 73 инструмента, multi-agent паттерны, approvals, RAG и аудит. .NET 10, Docker.",
+      "url": "https://iiruchating.ru/iichattools/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux, Windows, Docker",
+      "inLanguage": "ru",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IIRuChating",
+        "url": "https://iiruchating.ru/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "IIRuChating",
+          "item": "https://iiruchating.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "IIChatTools",
+          "item": "https://iiruchating.ru/iichattools/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="assets/img/web-app-manifest.json" />
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Inter-cyrillic.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Manrope-cyrillic.woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/theme-m3.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand brand--product" href="#top" aria-label="IIChatTools — на главную">
+      <img class="brand__icon plogo" src="assets/img/products/iichattools.svg" alt="IIChatTools" width="64" height="64" />
+      <span class="brand__name">IIChatTools</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#features">Возможности</a>
+      <a class="nav__link" href="#tech">Как устроено</a>
+      <a class="nav__link" href="#status">Статус</a>
+      <a class="nav__link" href="#cta">Демо</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header__cta" href="mailto:info@iiruchating.ru">Запросить демо</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot"></span>IIChatTools · v2.2.0 · active development</p>
+        <h1 class="hero__title">Локальная LLM<br /><span class="grad">с доступом к вашей среде</span></h1>
+        <p class="hero__lead">IIChatTools даёт модели инструменты разработчика: файлы, Git/GitHub, HTTP, почту, браузер и базы данных. Multi-agent паттерны — Debate, Orchestrator-Worker, Reflection — выполняют задачи по шагам, а approvals и аудит оставляют человека в контуре.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#features">Смотреть возможности</a>
+          <a class="btn btn--ghost" href="https://iiruchating.ru/">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg>
+            Все продукты IIRuChating
+          </a>
+        </div>
+
+        <ul class="hero__stats">
+          <li><b>73 инструмента</b><span>файлы, Git, HTTP, почта, БД, браузер, RAG</span></li>
+          <li><b>7 суб-агентов</b><span>специализированные роли и consult_secondary_agent</span></li>
+          <li><b>1216 / 1224</b><span>тестов проходят, 8 пропущены</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="pmark">
+          <img class="pmark__logo plogo" src="assets/img/products/iichattools.svg" alt="" width="120" height="120" />
+          <div class="pmark__body">
+            <b>IIChatTools</b>
+            <span>Локальные LLM с инструментами разработчика</span>
+            <div class="pmark__chips">
+              <span class="stack-chip">.NET 10</span>
+              <span class="stack-chip">ASP.NET Core</span>
+              <span class="stack-chip">LM Studio</span>
+              <span class="stack-chip">RAG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Возможности</p>
+        <h2 class="section__title">IIChatTools</h2>
+        <p class="section__lead">IIChatTools даёт модели инструменты разработчика: файлы, Git/GitHub, HTTP, почту, браузер и базы данных. Multi-agent паттерны — Debate, Orchestrator-Worker, Reflection — выполняют задачи по шагам, а approvals и аудит оставляют человека в контуре.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Чат с локальной LLM</h3>
+          <p>Razor-интерфейс со стримингом SSE, историей, ветками сообщений, экспортом и approvals. Модель подключается через OpenAI-совместимый API LM Studio.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>73 инструмента</h3>
+          <p>Файловая система, Git/GitHub, HTTP, SQL, почта IMAP/SMTP, браузер, RAG и планировщик. Модель сама выбирает инструмент в multi-turn цикле.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Multi-agent паттерны</h3>
+          <p>Actor-Critic, Debate Pro/Contra/Judge, Orchestrator-Worker с Blackboard и Reflection. Сложная задача разбивается на роли и проверяемые шаги.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Approvals и песочница</h3>
+          <p>Изменяющие действия требуют подтверждения: drag-and-drop, countdown, approve/reject. Пути и команды ограничены whitelist и TTL-сессиями.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>RAG и знания</h3>
+          <p>Семантический поиск по проектной документации, истории чатов и workspace. Четыре коллекции, auto-inject top-K в системный промпт.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6z"/></svg></div>
+          <h3>Аудит и роли</h3>
+          <p>Admin/User, изоляция workspace, журнал действий в БД и JSONL, RU/EN-интерфейс. Подключение MSSQL, SQLite или InMemory.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="tech">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Архитектура</p>
+        <h2 class="section__title">ASP.NET Core, LM Studio и песочница инструментов</h2>
+        <p class="section__lead">Сервер на .NET 10 LTS принимает SSE-запросы, оркестрирует инструменты и хранит состояние. LLM работает рядом — в LM Studio или другом OpenAI-совместимом сервере.</p>
+      </div>
+
+      <div class="split">
+        <div class="split__col">
+          <h3 class="split__title">Агентный слой</h3>
+          <ul class="checklist">
+            <li><b>Tool Registry</b> — 73 инструмента с whitelist путей и команд.</li>
+            <li><b>Multi-agent</b> — sub-agent engine, Debate, Orchestrator + Blackboard, Reflection.</li>
+            <li><b>Security Sandbox</b> — approvals, TTL-сессии, ограничение путей и аргументов.</li>
+            <li><b>RAG</b> — 4 коллекции, эмбеддинги и auto-inject в system prompt.</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <h3 class="split__title">Платформа</h3>
+          <ul class="checklist">
+            <li><b>.NET 10 LTS</b> — ASP.NET Core, Razor UI, EF Core 10, SSE.</li>
+            <li><b>LM Studio</b> — OpenAI-совместимый API, локальная модель без облака.</li>
+            <li><b>MSSQL / SQLite</b> — выбор провайдера, миграции и InMemory для тестов.</li>
+            <li><b>Docker + CI</b> — образ на ghcr.io, сборка и тесты в GitHub Actions.</li>
+          </ul>
+          <div class="stack-chips">
+            <span class="stack-chip">.NET 10</span>
+            <span class="stack-chip">ASP.NET Core</span>
+            <span class="stack-chip">LM Studio</span>
+            <span class="stack-chip">RAG</span>
+            <span class="stack-chip">Multi-agent</span>
+            <span class="stack-chip">MSSQL</span>
+            <span class="stack-chip">SQLite</span>
+            <span class="stack-chip">Docker</span>
+            <span class="stack-chip">SSE</span>
+            <span class="stack-chip">Whisper.net</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section class="section" id="status">
+    <div class="container">
+      <div class="limits reveal">
+        <div>
+          <p class="eyebrow">Статус</p>
+          <h2 class="section__title">v2.2.0: локальный агент в вашем контуре</h2>
+          <p class="section__lead">IIChatTools развивается как self-hosted инструмент: работает с локальной LLM, хранит данные в своей БД и не требует облачных API.</p>
+        </div>
+        <ul class="limits__list">
+          <li>v2.2.0: Chat UI, 73 инструмента и multi-agent паттерны.</li>
+          <li>1216 из 1224 тестов проходят, 8 пропущены (unit + integration).</li>
+          <li>Actor-Critic, Debate, Orchestrator-Worker и Reflection.</li>
+          <li>Approvals, whitelist путей и команд, TTL-сессии, аудит действий.</li>
+          <li>Docker-образ на ghcr.io, CI на GitHub Actions.</li>
+          <li>MSSQL, SQLite или InMemory; интерфейс RU/EN.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="cta">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2 class="section__title">Покажем IIChatTools в деле</h2>
+          <p class="section__lead">
+            Развернём стенд на вашем железе или в вашем контуре и покажем, как агент работает с вашими инструментами и данными. Исходники открыты на GitHub — можно собрать самостоятельно.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="mailto:info@iiruchating.ru">Обсудить внедрение</a>
+          <a class="btn btn--ghost" href="https://github.com/iilmchat/IIChatTools">Репозиторий на GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/img/logo-full.svg" alt="IIRuChating" width="240" height="96" />
+      <p>IIChatTools — продукт бренда IIRuChating.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+      <a href="#features">Возможности</a>
+      <a href="#tech">Как устроено</a>
+      <a href="#status">Статус</a>
+      <a href="#cta">Демо</a>
+    </nav>
+    <div class="footer__meta">
+      <a href="mailto:info@iiruchating.ru">info@iiruchating.ru</a>
+      <a href="https://iiruchating.ru/">iiruchating.ru</a>
+      <a href="https://iiruchating.ru/privacy/">Политика конфиденциальности</a>
+      <span>© 2026 IIRuChating</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="/assets/js/consent.js" defer></script>
+</body>
+</html>

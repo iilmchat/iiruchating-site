@@ -24,6 +24,7 @@ AI-ассистентом).
 ├── vetassistant/               # лендинг VetAssistant
 ├── iichattools/                # лендинг IIChatTools
 ├── qwenforge/                  # лендинг QwenForge
+├── workflow-builder/           # лендинг AI Workflow Builder
 └── assets/
     ├── css/
     │   ├── styles.css          # вёрстка лендинга

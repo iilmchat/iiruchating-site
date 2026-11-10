@@ -107,9 +107,9 @@
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="container hero__inner">
       <div class="hero__content">
-        <p class="eyebrow"><span class="dot"></span>QwenForge · v0.3.0 · stable</p>
+        <p class="eyebrow"><span class="dot"></span>QwenForge · v1.0.0 · stable</p>
         <h1 class="hero__title">От датасета<br /><span class="grad">до GGUF-модели</span></h1>
-        <p class="hero__lead">QwenForge ведёт модель Qwen через весь цикл: приводит датасет к chat template, дообучает QLoRA или CPT, экспортирует в GGUF и проверяет запуск в llama.cpp. Один CLI вместо самодельных скриптов.</p>
+        <p class="hero__lead">QwenForge ведёт модель Qwen через весь цикл: приводит датасет к chat template, дообучает QLoRA или CPT, экспортирует в GGUF и проверяет запуск в llama.cpp. Один CLI и веб-интерфейс QwenForge Studio вместо самодельных скриптов.</p>
 
         <div class="hero__actions">
           <a class="btn btn--primary" href="#tech">Как устроено</a>
@@ -120,8 +120,8 @@
         </div>
 
         <ul class="hero__stats">
-          <li><b>3 команды</b><span>prepare-data, train, export-gguf</span></li>
-          <li><b>316 тестов</b><span>pipeline-тесты и 3 gated smoke</span></li>
+          <li><b>Studio + CLI</b><span>веб-интерфейс и prepare-data → train → export-gguf</span></li>
+          <li><b>317 тестов</b><span>pipeline-тесты и 3 gated smoke</span></li>
           <li><b>8–12 ГБ VRAM</b><span>профили AMD, CUDA и low-vram</span></li>
         </ul>
       </div>
@@ -236,12 +236,12 @@
       <div class="limits reveal">
         <div>
           <p class="eyebrow">Статус</p>
-          <h2 class="section__title">v0.3.0: stable, 316 тестов</h2>
-          <p class="section__lead">Конвейер проверен на реальном датасете: 1000 партий Lichess, SFT за 119 минут на RTX 3060, GGUF q4_k_m на 4.46 ГБ.</p>
+          <h2 class="section__title">v1.0.0: QwenForge Studio</h2>
+          <p class="section__lead">CLI/QLoRA pipeline стабилен; v1.0.0 добавляет QwenForge Studio — веб-интерфейс для обучения, мониторинга и экспорта. Конвейер проверен на реальном датасете: 1000 партий Lichess, SFT за 119 минут на RTX 3060, GGUF q4_k_m на 4.46 ГБ.</p>
         </div>
         <ul class="limits__list">
-          <li>v0.3.0 stable: полный цикл prepare-data → train → export-gguf.</li>
-          <li>316 pipeline-тестов и 3 gated smoke на GPU.</li>
+          <li>v1.0.0 — QwenForge Studio (FastAPI + React + arq + Docker), CLI pipeline стабилен.</li>
+          <li>317 pipeline-тестов + 3 gated smoke, 72 Studio backend + 17 frontend.</li>
           <li>E2E: 1000 партий, loss 1.60 → 0.38, peak VRAM 5.6 ГБ, 6.2 t/s.</li>
           <li>Поддержка Qwen2.5 0.5B–32B и Qwen3 0.6B–14B.</li>
           <li>Лицензия proprietary, репозиторий приватный.</li>
